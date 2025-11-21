@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.15)  20 NOV 2025 20:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.15)  20 NOV 2025 23:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -770,114 +770,124 @@ File: assets/function_3d.png Graphic file (type png)
 <use assets/function_3d.png>
 Package pdftex.def Info: assets/function_3d.png  used on input line 77.
 (pdftex.def)             Requested size: 386.96027pt x 336.36952pt.
- [2 <./assets/function_3d.png>] [3{C:/Users/TIGER/AppData/Local/Programs/MiKTeX
-/fonts/enc/dvips/lm/lm-mathex.enc}]
+<assets/contour_plot.png, id=273, 602.25pt x 511.6716pt>
+File: assets/contour_plot.png Graphic file (type png)
+<use assets/contour_plot.png>
+Package pdftex.def Info: assets/contour_plot.png  used on input line 84.
+(pdftex.def)             Requested size: 386.96027pt x 328.77255pt.
+ [2 <./assets/function_3d.png>] [3 <./assets/contour_plot.png>] [4{C:/Users/TIG
+ER/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 176.
+(hyperref)                removing `math shift' on input line 183.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 176.
+(hyperref)                removing `math shift' on input line 183.
 
-[4] [5] [6]
-Overfull \hbox (2.47278pt too wide) in paragraph at lines 288--298
+[5] [6] [7]
+Overfull \hbox (2.47278pt too wide) in paragraph at lines 295--305
  [][] 
  []
 
-[7]
-Overfull \hbox (15.53607pt too wide) in paragraph at lines 320--325
+[8]
+Overfull \hbox (15.53607pt too wide) in paragraph at lines 327--332
 []\T1/lmr/m/n/12 (-20) Ajusta $\OML/lmm/m/it/12 $ \T1/lmr/m/n/12 (-20) di-ná-m
 i-ca-men-te ba-sa-do en el pro-gre-so: $\OML/lmm/m/it/12 [] \OT1/lmr/m/n/12 (-
 20) = []$\T1/lmr/m/n/12 (-20) . 
  []
 
-[8]
-Overfull \hbox (1.23639pt too wide) in paragraph at lines 362--374
- [][] 
- []
-
 [9]
-<assets/convergence_10_10_20251120-183641.png, id=337, 1070.5596pt x 346.896pt>
-
-File: assets/convergence_10_10_20251120-183641.png Graphic file (type png)
-<use assets/convergence_10_10_20251120-183641.png>
-Package pdftex.def Info: assets/convergence_10_10_20251120-183641.png  used on 
-input line 404.
-(pdftex.def)             Requested size: 409.71692pt x 132.76402pt.
-<assets/trajectories_10_10_20251120-183640.png, id=338, 1069.596pt x 708.246pt>
-
-File: assets/trajectories_10_10_20251120-183640.png Graphic file (type png)
-<use assets/trajectories_10_10_20251120-183640.png>
-Package pdftex.def Info: assets/trajectories_10_10_20251120-183640.png  used on
- input line 411.
-(pdftex.def)             Requested size: 409.71692pt x 271.29765pt.
- [10 <./assets/convergence_10_10_20251120-183641.png>]
-Overfull \hbox (14.0913pt too wide) in paragraph at lines 455--465
+Overfull \hbox (1.23639pt too wide) in paragraph at lines 369--381
  [][] 
  []
 
-[11 <./assets/trajectories_10_10_20251120-183640.png>]
-<assets/robustness_analysis_20251120-183643.png, id=354, 1070.5596pt x 347.3778
-pt>
-File: assets/robustness_analysis_20251120-183643.png Graphic file (type png)
-<use assets/robustness_analysis_20251120-183643.png>
-Package pdftex.def Info: assets/robustness_analysis_20251120-183643.png  used o
-n input line 507.
-(pdftex.def)             Requested size: 409.71692pt x 132.94843pt.
- [12]
-<assets/histograma_precision.png, id=362, 999.4941pt x 709.6914pt>
+[10]
+<assets/convergence_analysis.png, id=344, 1070.5596pt x 346.896pt>
+File: assets/convergence_analysis.png Graphic file (type png)
+<use assets/convergence_analysis.png>
+Package pdftex.def Info: assets/convergence_analysis.png  used on input line 41
+1.
+(pdftex.def)             Requested size: 409.71692pt x 132.76402pt.
+<assets/optimization_trajectories.png, id=345, 727.9998pt x 622.4856pt>
+File: assets/optimization_trajectories.png Graphic file (type png)
+<use assets/optimization_trajectories.png>
+Package pdftex.def Info: assets/optimization_trajectories.png  used on input li
+ne 418.
+(pdftex.def)             Requested size: 409.71692pt x 350.34676pt.
+ [11 <./assets/convergence_analysis.png>] [12 <./assets/optimization_trajectori
+es.png>]
+Overfull \hbox (14.0913pt too wide) in paragraph at lines 462--472
+ [][] 
+ []
+
+<assets/robustness_analysis.png, id=360, 1288.3332pt x 854.2314pt>
+File: assets/robustness_analysis.png Graphic file (type png)
+<use assets/robustness_analysis.png>
+Package pdftex.def Info: assets/robustness_analysis.png  used on input line 514
+.
+(pdftex.def)             Requested size: 409.71692pt x 271.66515pt.
+[13]
+<assets/histograma_precision.png, id=370, 999.4941pt x 709.6914pt>
 File: assets/histograma_precision.png Graphic file (type png)
 <use assets/histograma_precision.png>
-Package pdftex.def Info: assets/histograma_precision.png  used on input line 51
-6.
+Package pdftex.def Info: assets/histograma_precision.png  used on input line 52
+3.
 (pdftex.def)             Requested size: 409.71692pt x 290.9212pt.
-<assets/tiempo_vs_iteraciones.png, id=363, 854.2314pt x 566.5968pt>
+ [14 <./assets/robustness_analysis.png>]
+<assets/tiempo_vs_iteraciones.png, id=377, 854.2314pt x 566.5968pt>
 File: assets/tiempo_vs_iteraciones.png Graphic file (type png)
 <use assets/tiempo_vs_iteraciones.png>
 Package pdftex.def Info: assets/tiempo_vs_iteraciones.png  used on input line 5
-23.
+30.
 (pdftex.def)             Requested size: 409.71692pt x 271.75587pt.
- [13 <./assets/robustness_analysis_20251120-183643.png> <./assets/histograma_pr
-ecision.png>]
+ [15 <./assets/histograma_precision.png>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-34.
-
-(C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+41.
+ (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<assets/boxplot_iteraciones.png, id=373, 855.6768pt x 567.0786pt>
+<assets/boxplot_iteraciones.png, id=384, 855.6768pt x 567.0786pt>
 File: assets/boxplot_iteraciones.png Graphic file (type png)
 <use assets/boxplot_iteraciones.png>
-Package pdftex.def Info: assets/boxplot_iteraciones.png  used on input line 540
+Package pdftex.def Info: assets/boxplot_iteraciones.png  used on input line 547
 .
 (pdftex.def)             Requested size: 409.71692pt x 271.52835pt.
- [14{C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
-} <./assets/tiempo_vs_iteraciones.png>]
-<assets/heatmap_convergencia.png, id=381, 1003.1076pt x 850.8588pt>
+
+[16{C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}
+ <./assets/tiempo_vs_iteraciones.png>]
+<assets/massive_experiment_results.png, id=392, 1071.0414pt x 854.2314pt>
+File: assets/massive_experiment_results.png Graphic file (type png)
+<use assets/massive_experiment_results.png>
+Package pdftex.def Info: assets/massive_experiment_results.png  used on input l
+ine 554.
+(pdftex.def)             Requested size: 409.71692pt x 326.77504pt.
+ [17 <./assets/boxplot_iteraciones.png>]
+<assets/heatmap_convergencia.png, id=399, 1003.1076pt x 850.8588pt>
 File: assets/heatmap_convergencia.png Graphic file (type png)
 <use assets/heatmap_convergencia.png>
-Package pdftex.def Info: assets/heatmap_convergencia.png  used on input line 54
-7.
+Package pdftex.def Info: assets/heatmap_convergencia.png  used on input line 56
+1.
 (pdftex.def)             Requested size: 409.71692pt x 347.53009pt.
- [15 <./assets/boxplot_iteraciones.png>] [16 <./assets/heatmap_convergencia.png
->]
-Underfull \hbox (badness 4378) in paragraph at lines 577--578
+
+[18 <./assets/massive_experiment_results.png>] [19 <./assets/heatmap_convergenc
+ia.png>]
+Underfull \hbox (badness 4378) in paragraph at lines 591--592
 []\T1/lmr/m/n/12 (+20) Confirmado en mues-tra
  []
 
 
-Overfull \hbox (46.33907pt too wide) in paragraph at lines 571--581
+Overfull \hbox (46.33907pt too wide) in paragraph at lines 585--595
  [][] 
  []
 
-[17]
-Overfull \hbox (35.70276pt too wide) in paragraph at lines 622--623
+[20]
+Overfull \hbox (35.70276pt too wide) in paragraph at lines 636--637
 []\T1/lmr/m/n/12 (-20) Clonar el re-po-si-to-rio: []$\T1/lmtt/m/n/12 https : / 
 / github . com / Ronald1301 / Optimization-[]algorithms-[]RPV .
  []
 
-[18] (optimization_report.aux
+[21] (optimization_report.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -889,13 +899,13 @@ Package rerunfilecheck Info: File `optimization_report.out' has not changed.
 (rerunfilecheck)             Checksum: 4F274DB20CBD94869CB1C75DAB0C8129;14286.
  ) 
 Here is how much of TeX's memory you used:
- 18616 strings out of 474486
- 301320 string characters out of 5743754
- 1939542 words of memory out of 5000000
- 40267 multiletter control sequences out of 15000+600000
+ 18637 strings out of 474486
+ 301679 string characters out of 5743754
+ 1942542 words of memory out of 5000000
+ 40283 multiletter control sequences out of 15000+600000
  653176 words of font info for 217 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,14n,79p,1018b,473s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,14n,79p,1018b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.p
@@ -914,9 +924,9 @@ sers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Us
 ers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Us
 ers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb>
-Output written on optimization_report.pdf (18 pages, 1977985 bytes).
+Output written on optimization_report.pdf (21 pages, 2439016 bytes).
 PDF statistics:
- 531 PDF objects out of 1000 (max. 8388607)
- 126 named destinations out of 1000 (max. 500000)
- 52249 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 551 PDF objects out of 1000 (max. 8388607)
+ 131 named destinations out of 1000 (max. 500000)
+ 52259 words of extra memory for PDF output out of 61914 (max. 10000000)
 
