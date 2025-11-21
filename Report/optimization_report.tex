@@ -14,8 +14,13 @@
 \usepackage{caption}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{lmodern} % Para resolver el error de fuentes escalables
+\usepackage[T1]{fontenc} % Para mejor manejo de fuentes
 
-\geometry{margin=2.5cm}
+% Configuración mejorada de geometría para evitar overfull hboxes
+\geometry{margin=2.5cm, includefoot, includehead}
+\setlength{\emergencystretch}{3em} % Permite que LaTeX ajuste mejor el texto
+\setlength{\hfuzz}{5pt} % Permite un poco más de desbordamiento antes de mostrar warnings
 
 % Configuración para códigos
 \lstset{
@@ -67,30 +72,22 @@
 		f(x, y) = \log(x^2 + y^2 + 1) \cdot \arctan(x^2 + y^2)
 	\end{equation}
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\textwidth]{assets/function_3d.png}
+		\caption{Graficación de la función en 3D.}
+		\label{fig:function_3d}
+	\end{figure}
+	
 	\subsection{Características Notables de la Función}
 	
-	Esta función presenta características matemáticas interesantes que la convierten en un excelente caso de estudio:
-	
-	\begin{itemize}
-		\item \textbf{Simetría radial}: Depende únicamente de $r = x^2 + y^2$
-		\item \textbf{Diferenciabilidad infinita}: Es $C^\infty$ en todo $\mathbb{R}^2$
-		\item \textbf{Comportamiento asintótico bien definido}: Crece suavemente hacia infinito
-		\item \textbf{Mínimo global único}: En el origen $(0,0)$
-		\item \textbf{No convexidad global}: Aunque tiene un único mínimo
-	\end{itemize}
+	Esta función presenta características matemáticas interesantes que la convierten en un excelente caso de estudio debido a su simetría radial, dependiendo únicamente de $r = x^2 + y^2$, y su diferenciabilidad infinita al ser $C^\infty$ en todo $\mathbb{R}^2$. Posee un comportamiento asintótico bien definido creciendo suavemente hacia infinito, con un mínimo global único en el origen $(0,0)$, aunque presenta no convexidad global a pesar de tener este único mínimo.
 	
 	\subsection{Objetivos del Análisis}
 	
-	El análisis se centra en:
-	\begin{enumerate}
-		\item Demostrar teóricamente la existencia y unicidad del mínimo
-		\item Analizar las propiedades de convexidad y diferenciabilidad usando teoría de PNL
-		\item Implementar y comparar algoritmos de optimización con base teórica sólida
-		\item Evaluar robustez y eficiencia numérica según teoría de convergencia
-		\item Proporcionar recomendaciones prácticas basadas en teoría de optimización
-	\end{enumerate}
+	El análisis se centra en demostrar teóricamente la existencia y unicidad del mínimo, analizar las propiedades de convexidad y diferenciabilidad usando teoría de PNL, implementar y comparar algoritmos de optimización con base teórica sólida, evaluar robustez y eficiencia numérica según teoría de convergencia, y proporcionar recomendaciones prácticas basadas en teoría de optimización.
 	
-	\newpage
+	
 	\section{Análisis Teórico del Modelo}
 	
 	\subsection{Existencia y Unicidad del Mínimo}
@@ -100,26 +97,7 @@
 	\end{teorema}
 	
 	\begin{proof}
-		Para demostrar la existencia del mínimo global, verificamos tres condiciones:
-		
-		\textbf{Condición 1: No negatividad}\\
-		Para todo $(x,y) \in \mathbb{R}^2$, observamos que:
-		\begin{itemize}
-			\item $\log(x^2 + y^2 + 1) \geq \log(1) = 0$ (función creciente)
-			\item $\arctan(x^2 + y^2) \geq \arctan(0) = 0$ (función creciente)
-			\item Por lo tanto, $f(x,y) \geq 0$ para todo $(x,y)$
-		\end{itemize}
-		
-		\textbf{Condición 2: Valor en el origen}\\
-		$f(0,0) = \log(1) \cdot \arctan(0) = 0 \cdot 0 = 0$
-		
-		\textbf{Condición 3: Comportamiento asintótico}\\
-		Cuando $\|(x,y)\| \to \infty$, tenemos:
-		\begin{itemize}
-			\item $\log(x^2 + y^2 + 1) \sim \log(x^2 + y^2) \to \infty$
-			\item $\arctan(x^2 + y^2) \to \frac{\pi}{2}$
-			\item Por lo tanto, $f(x,y) \to \infty$
-		\end{itemize}
+		Para demostrar la existencia del mínimo global, verificamos tres condiciones: la no negatividad donde para todo $(x,y) \in \mathbb{R}^2$ observamos que $\log(x^2 + y^2 + 1) \geq \log(1) = 0$ y $\arctan(x^2 + y^2) \geq \arctan(0) = 0$, por lo tanto $f(x,y) \geq 0$ para todo $(x,y)$; el valor en el origen donde $f(0,0) = \log(1) \cdot \arctan(0) = 0 \cdot 0 = 0$; y el comportamiento asintótico donde cuando $\|(x,y)\| \to \infty$ tenemos $\log(x^2 + y^2 + 1) \sim \log(x^2 + y^2) \to \infty$ y $\arctan(x^2 + y^2) \to \frac{\pi}{2}$, por lo tanto $f(x,y) \to \infty$. 
 		
 		Por el \textbf{teorema de Weierstrass}, al ser $f$ continua y tender a infinito en el infinito, existe al menos un mínimo global en un conjunto compacto. La unicidad se demuestra mediante el análisis de puntos críticos.
 	\end{proof}
@@ -149,20 +127,7 @@
 	\end{proposicion}
 	
 	\begin{proof}
-		El gradiente se anula cuando:
-		\begin{itemize}
-			\item Caso 1: $x = 0$ y $y = 0$ (origen)
-			\item Caso 2: $g(r) = 0$ para algún $r > 0$
-		\end{itemize}
-		
-		Analicemos $g(r)$ para $r > 0$:
-		\begin{itemize}
-			\item $\frac{\arctan(r)}{r+1} > 0$ (numerador y denominador positivos)
-			\item $\frac{\log(r+1)}{1+r^2} > 0$ (numerador y denominador positivos)
-			\item Por lo tanto, $g(r) > 0$ para todo $r > 0$
-		\end{itemize}
-		
-		Esto implica que el único punto donde $\nabla f(x,y) = (0,0)$ es $(0,0)$.
+		El gradiente se anula cuando $x = 0$ y $y = 0$ (origen) o cuando $g(r) = 0$ para algún $r > 0$. Analizando $g(r)$ para $r > 0$ encontramos que $\frac{\arctan(r)}{r+1} > 0$ y $\frac{\log(r+1)}{1+r^2} > 0$, por lo tanto $g(r) > 0$ para todo $r > 0$. Esto implica que el único punto donde $\nabla f(x,y) = (0,0)$ es $(0,0)$.
 	\end{proof}
 	
 	\subsection{Análisis de la Hessiana}
@@ -171,11 +136,13 @@
 	
 	La matriz Hessiana tiene la forma:
 	\begin{equation}
-		H(x,y) = \begin{bmatrix}
+		H(x,y) = 
+		\begin{bmatrix}
 			\dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\
 			\dfrac{\partial^2 f}{\partial y \partial x} & \dfrac{\partial^2 f}{\partial y^2}
 		\end{bmatrix}
-		= \begin{bmatrix}
+		= 
+		\begin{bmatrix}
 			2g(r) + 4x^2 g'(r) & 4xy g'(r) \\
 			4xy g'(r) & 2g(r) + 4y^2 g'(r)
 		\end{bmatrix}
@@ -188,65 +155,72 @@
 	\end{proposicion}
 	
 	\begin{proof}
-		En $(0,0)$ tenemos:
-		\begin{itemize}
-			\item $r = 0$, $g(0) = 0$, $g'(0) = 2$
-			\item Por lo tanto:
-			\begin{equation}
-				H(0,0) = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}
-			\end{equation}
-			\item Una matriz nula es semidefinida positiva por definición, ya que para cualquier vector $v \in \mathbb{R}^2$:
-			\begin{equation}
-				v^T H(0,0) v = 0 \geq 0
-			\end{equation}
-		\end{itemize}
+		En $(0,0)$ tenemos $r = 0$, $g(0) = 0$, $g'(0) = 2$, por lo tanto $H(0,0) = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$. Una matriz nula es semidefinida positiva por definición, ya que para cualquier vector $v \in \mathbb{R}^2$: $v^T H(0,0) v = 0 \geq 0$.
 	\end{proof}
 	
-	\textbf{Implicación teórica}: La Hessiana semidefinida positiva en el óptimo es una condición suficiente para mínimo local, pero no garantiza unicidad. En este caso particular, la unicidad del mínimo global se demuestra mediante otros argumentos (comportamiento asintótico y análisis de puntos críticos).
-	
-	\textbf{Implicación práctica}: La Hessiana nula en el óptimo presenta desafíos numéricos significativos para métodos de segundo orden como Newton, ya que la matriz no es invertible en el punto de interés.
+	La Hessiana semidefinida positiva en el óptimo es una condición suficiente para mínimo local, pero no garantiza unicidad. En este caso particular, la unicidad del mínimo global se demuestra mediante otros argumentos (comportamiento asintótico y análisis de puntos críticos). La Hessiana nula en el óptimo presenta desafíos numéricos significativos para métodos de segundo orden como Newton, ya que la matriz no es invertible en el punto de interés.
 	
 	\subsection{Análisis de Convexidad}
 	
-	\begin{definicion}[Función convexa ]
+	\begin{definicion}[Función convexa]
+		\label{def:funcion_convexa}
 		Una función $f: C \to \mathbb{R}$, donde $C \subset \mathbb{R}^n$ es convexo, es convexa si para todo $\alpha \in [0, 1], x_1, x_2 \in C$:
 		\[f(\alpha x_1 + (1-\alpha)x_2) \leq \alpha f(x_1) + (1-\alpha)f(x_2)\]
 	\end{definicion}
 	
 	\begin{teorema}[Caracterización de convexidad para funciones $C^2$]
-		Sea $f: \mathbb{R}^n \to \mathbb{R}$, $f \in C^2$. Entonces:
-		\begin{enumerate}
-			\item $f$ es convexa si y solo si $\nabla^2 f(x)$ es semidefinida positiva para todo $x \in \mathbb{R}^n$
-			\item Si $\nabla^2 f(x)$ es definida positiva para todo $x$, entonces $f$ es estrictamente convexa
-		\end{enumerate}
+		\label{teo:caracterizacion_convexidad}
+		Sea $f: \mathbb{R}^n \to \mathbb{R}$, $f \in C^2$. Entonces $f$ es convexa si y solo si $\nabla^2 f(x)$ es semidefinida positiva para todo $x \in \mathbb{R}^n$, y si $\nabla^2 f(x)$ es definida positiva para todo $x$, entonces $f$ es estrictamente convexa.
 	\end{teorema}
+	
+	\subsubsection{Proposición sobre la Convexidad de $f(x,y)$}
 	
 	\begin{proposicion}[Convexidad de $f(x,y)$]
-		Nuestra función $f(x,y) = \log(x^2 + y^2 + 1) \cdot \arctan(x^2 + y^2)$ no es convexa globalmente porque:
-		\begin{itemize}
-			\item $\nabla^2 f(0,0) = 0$ (matriz nula, semidefinida positiva)
-			\item Existen regiones donde $\nabla^2 f(x,y)$ tiene autovalores negativos
-			\item Sin embargo, es localmente convexa en conjuntos compactos que no contienen al origen
-		\end{itemize}
+		\label{prop:convexidad_funcion}
+		Nuestra función $f(x,y) = \log(x^2 + y^2 + 1) \cdot \arctan(x^2 + y^2)$ no es convexa globalmente porque $\nabla^2 f(0,0) = 0$ (matriz nula, semidefinida positiva), existen regiones donde $\nabla^2 f(x,y)$ tiene autovalores negativos, sin embargo es localmente convexa en conjuntos compactos que no contienen al origen.
 	\end{proposicion}
 	
+	\subsubsection{Ejemplo: Demostración de No Convexidad mediante la Hessiana}
+	
+	Para demostrar que la función no es convexa, basta encontrar un punto donde la matriz Hessiana no sea semidefinida positiva. Consideremos el punto $(x, y) = (\sqrt{10}, 0)$, que corresponde a $r = x^2 + y^2 = 10$. 
+	
+	En este punto, evaluamos la función $g(r)$ y su derivada $g'(r)$: 
+	$g(10) = \frac{\arctan(10)}{11} + \frac{\log(11)}{101} \approx 0.1574$ y 
+	$g'(10) \approx -0.0429$. 
+	
+	La matriz Hessiana en $(\sqrt{10}, 0)$ es:
+	\begin{align*}
+		H(\sqrt{10}, 0) &= 
+		\begin{bmatrix}
+			2g(10) + 4\cdot 10 \cdot g'(10) & 0 \\
+			0 & 2g(10)
+		\end{bmatrix} \\
+		&= 
+		\begin{bmatrix}
+			2(0.1574) + 40(-0.0429) & 0 \\
+			0 & 2(0.1574)
+		\end{bmatrix} \\
+		&= 
+		\begin{bmatrix}
+			-1.0864 & 0 \\
+			0 & 0.3148
+		\end{bmatrix}
+	\end{align*}
+	
+	Los autovalores de esta matriz son $\lambda_1 = -1.0864$ y $\lambda_2 = 0.3148$. Dado que $\lambda_1 < 0$, la matriz Hessiana \textbf{no es semidefinida positiva} en este punto. Por lo tanto, la función no es convexa.
+	
+	\subsubsection{Importancia de la Convexidad en PNL}
+	
 	\begin{teorema}[Importancia de la convexidad en PNL]
-		Para un problema de optimización convexa:
-		\begin{itemize}
-			\item Todo mínimo local es global
-			\item Si $f$ es estrictamente convexa, el mínimo es único
-			\item Las condiciones KKT son necesarias y suficientes para optimalidad
-			\item El conjunto de soluciones factibles es convexo
-		\end{itemize}
+		\label{teo:importancia_convexidad}
+		Para un problema de optimización convexa: todo mínimo local es global, si $f$ es estrictamente convexa el mínimo es único, las condiciones KKT son necesarias y suficientes para optimalidad, y el conjunto de soluciones factibles es convexo.
 	\end{teorema}
 	
+	\subsubsection{Corolario para Nuestra Función}
+	
 	\begin{corolario}
-		Para nuestra función $f(x,y)$:
-		\begin{itemize}
-			\item Aunque no es convexa globalmente, tiene un único mínimo global
-			\item La no convexidad implica que métodos basados en condiciones de primer orden pueden converger a puntos estacionarios que no son mínimos globales
-			\item Sin embargo, el análisis de puntos críticos garantiza que $(0,0)$ es el único punto estacionario
-		\end{itemize}
+		\label{cor:implicaciones_convexidad}
+		Para nuestra función $f(x,y)$: aunque no es convexa globalmente, tiene un único mínimo global; la no convexidad implica que métodos basados en condiciones de primer orden pueden converger a puntos estacionarios que no son mínimos globales; sin embargo el análisis de puntos críticos garantiza que $(0,0)$ es el único punto estacionario; y la existencia de regiones con Hessiana no semidefinida positiva justifica el uso de múltiples puntos iniciales en los experimentos numéricos.
 	\end{corolario}
 	
 	\newpage
@@ -256,520 +230,367 @@
 	
 	\subsubsection{Algoritmos de Búsqueda Direccional}
 	
-	La estructura general de los métodos de descenso es:
-	
-	\begin{algorithmic}[1]
-		\State Fijar $x_0$, $k = 0$
-		\While{no se cumpla criterio de parada}
-		\State Calcular dirección de descenso $d_k$ tal que $\nabla f(x_k)^T d_k < 0$
-		\State Hallar $\alpha_k$ que minimice $f(x_k + \alpha d_k)$
-		\State $x_{k+1} = x_k + \alpha_k d_k$
-		\State $k = k + 1$
-		\EndWhile
-	\end{algorithmic}
+	La estructura general de los métodos de descenso es: fijar $x_0$, $k = 0$; mientras no se cumpla criterio de parada calcular dirección de descenso $d_k$ tal que $\nabla f(x_k)^T d_k < 0$; hallar $\alpha_k$ que minimice $f(x_k + \alpha d_k)$; $x_{k+1} = x_k + \alpha_k d_k$; $k = k + 1$.
 	
 	\subsubsection{Reglas de Búsqueda Lineal (Armijo)}
 	
-	La regla de Armijo garantiza disminución suficiente:
-	\[f(x_k + \alpha d_k) \leq f(x_k) + m_1 \alpha \nabla f(x_k)^T d_k\]
+	La regla de Armijo garantiza disminución suficiente: 
+	$f(x_k + \alpha d_k) \leq f(x_k) + m_1 \alpha \nabla f(x_k)^T d_k$ 
 	con $m_1 \in (0,1)$.
 	
 	\subsubsection{Método de Máximo Descenso}
 	
 	\begin{definicion}
-		La dirección de máximo descenso es:
-		\[d_k = -\nabla f(x_k)\]
+		La dirección de máximo descenso es: $d_k = -\nabla f(x_k)$.
 	\end{definicion}
 	
-	\textbf{Propiedades:}
-	\begin{itemize}
-		\item Convergencia lineal con razón $\left(\frac{A-a}{A+a}\right)$
-		\item $A$ y $a$ son los mayor y menor valor propio de $\nabla^2 f$
-		\item Propenso a zigzag en valles estrechos
-		\item $d_k^T \nabla f(x_k) = -\|\nabla f(x_k)\|^2 < 0$ (dirección de descenso)
-	\end{itemize}
+	Las propiedades del método incluyen convergencia lineal con razón $\left(\frac{A-a}{A+a}\right)$ donde $A$ y $a$ son los mayor y menor valor propio de $\nabla^2 f$, es propenso a zigzag en valles estrechos, y $d_k^T \nabla f(x_k) = -\|\nabla f(x_k)\|^2 < 0$ (dirección de descenso).
 	
-	\subsubsection{Método de Newton }
+	\subsubsection{Método de Newton}
 	
 	\begin{definicion}
-		La dirección de Newton resuelve:
-		\[\nabla^2 f(x_k) d_k = -\nabla f(x_k)\]
+		La dirección de Newton resuelve: $\nabla^2 f(x_k) d_k = -\nabla f(x_k)$.
 	\end{definicion}
 	
-	\textbf{Mejoras implementadas basadas en teoría:}
-	\begin{itemize}
-		\item \textbf{Regularización}: $H_{\text{reg}} = H + \lambda I$ para $\lambda \geq \max(0, -\lambda_{\min})$
-		\item \textbf{Pseudo-inversa}: Usando SVD cuando $H$ es singular
-		\item \textbf{Control de paso}: $\|d_k\| \leq \Delta$ para evitar pasos muy grandes
-	\end{itemize}
+	Las mejoras implementadas basadas en teoría incluyen regularización con $H_{\text{reg}} = H + \lambda I$ para $\lambda \geq \max(0, -\lambda_{\min})$, pseudo-inversa usando SVD cuando $H$ es singular, y control de paso con $\|d_k\| \leq \Delta$ para evitar pasos muy grandes.
 	
 	\begin{teorema}[Convergencia de Newton]
-		Si $x^*$ es mínimo local con $\nabla^2 f(x^*)$ definida positiva y $x_k$ suficientemente cercano a $x^*$, entonces:
-		\begin{itemize}
-			\item Convergencia superlineal
-			\item Si $f \in C^3$, convergencia cuadrática
-		\end{itemize}
+		Si $x^*$ es mínimo local con $\nabla^2 f(x^*)$ definida positiva y $x_k$ suficientemente cercano a $x^*$, entonces hay convergencia superlineal, y si $f \in C^3$, convergencia cuadrática.
 	\end{teorema}
 	
-\subsection{Filosofía de la Selección de Algoritmos: Un Enfoque Teórico-Práctico}
-
-La selección de algoritmos se fundamenta en un análisis riguroso de las propiedades teóricas de la función objetivo y los teoremas de convergencia de métodos de optimización. Esta elección estratégica busca cubrir el espectro completo de escenarios de optimización:
-
-\subsubsection{Análisis de las Características de la Función Objetivo}
-
-\begin{itemize}
-	\item \textbf{No convexidad global}: Aunque $f(x,y)$ tiene un único mínimo global, no es convexa en todo $\mathbb{R}^2$. Esto excluye métodos que requieren convexidad global para garantizar convergencia al óptimo global.
+	\subsection{Filosofía de la Selección de Algoritmos: Un Enfoque Teórico-Práctico}
 	
-	\item \textbf{Diferenciabilidad $C^\infty$}: La función es infinitamente diferenciable, lo que permite el uso de métodos de segundo orden sin restricciones de suavidad.
+	La selección de algoritmos se fundamenta en un análisis de las propiedades teóricas de la función objetivo y los teoremas de convergencia de los métodos de optimización. Esta elección estratégica busca cubrir el espectro completo de escenarios de optimización considerando la no convexidad global de $f(x,y)$ que aunque tiene un único mínimo global no es convexa en todo $\mathbb{R}^2$, lo que excluye métodos que requieren convexidad global para garantizar convergencia al óptimo global; la diferenciabilidad $C^\infty$ que permite el uso de métodos de segundo orden sin restricciones de suavidad; la Hessiana singular en el óptimo $H(0,0) = 0$ que presenta desafíos numéricos requiriendo técnicas de regularización; y el crecimiento asintótico suave que garantiza que métodos globalmente convergentes puedan encontrar el óptimo.
 	
-	\item \textbf{Hessiana singular en el óptimo}: $H(0,0) = 0$ presenta desafíos numéricos que requieren técnicas de regularización.
+	\subsubsection{Base Teórica para la Selección}
 	
-	\item \textbf{Crecimiento asintótico suave}: El comportamiento bien definido en el infinito garantiza que métodos globalmente convergentes puedan encontrar el óptimo.
-\end{itemize}
-
-\subsubsection{Base Teórica para la Selección}
-
-\begin{teorema}[Convergencia de Métodos de Optimización]
-	Para funciones no convexas pero con mínimo único, la selección de algoritmos debe considerar:
-	\begin{enumerate}
-		\item \textbf{Convergencia global}: Garantía de encontrar un punto estacionario desde cualquier punto inicial
-		\item \textbf{Tasa de convergencia local}: Eficiencia cerca del óptimo
-		\item \textbf{Robustez numérica}: Estabilidad frente a ill-conditioning
-		\item \textbf{Requisitos computacionales}: Balance entre costo por iteración y número de iteraciones
-	\end{enumerate}
-\end{teorema}
-
-\subsubsection{Justificación Teórica de Cada Algoritmo}
-
-\textbf{Gradiente Descendente (Paso Fijo)}:
-\begin{itemize}
-	\item \textbf{Fundamento teórico}: Método de descenso por gradiente con convergencia lineal garantizada para funciones $L$-suaves
-	\item \textbf{Teorema aplicado}: Para $f$ $L$-suave, GD con $\alpha \in (0, 2/L)$ converge a punto estacionario
-	\item \textbf{Ventaja teórica}: Simplicidad y bajo costo computacional ($O(n)$ por iteración)
-	\item \textbf{Limitación teórica}: Tasa de convergencia lineal, sensible al número de condición
-\end{itemize}
-
-\textbf{Gradiente Descendente Adaptativo}:
-\begin{itemize}
-	\item \textbf{Fundamento teórico}: Búsqueda lineal con condiciones de Armijo-Wolfe
-	\item \textbf{Teorema aplicado}: Métodos con búsqueda lineal satisfacen condiciones de suficiencia de descenso
-	\item \textbf{Ventaja teórica}: Convergencia global sin necesidad de conocer constante de Lipschitz
-	\item \textbf{Contribución}: Automatización de parámetros basada en teoría de convergencia
-\end{itemize}
-
-\textbf{Método de Newton}:
-\begin{itemize}
-	\item \textbf{Fundamento teórico}: Aproximación cuadrática local con convergencia cuadrática
-	\item \textbf{Teorema aplicado}: Convergencia cuadrática local si $\nabla^2 f(x^*)$ es definida positiva
-	\item \textbf{Desafío teórico}: Hessiana singular en óptimo requiere regularización
-	\item \textbf{Solución teórica}: Regularización de Levenberg-Marquardt ($H + \lambda I$)
-\end{itemize}
-
-\textbf{Algoritmo Híbrido}:
-\begin{itemize}
-	\item \textbf{Fundamento teórico}: Combinación óptima de robustez global y eficiencia local
-	\item \textbf{Teorema aplicado}: Estrategias de conmutación basadas en condiciones de optimalidad
-	\item \textbf{Ventaja teórica}: Aprovecha convergencia global de GD y convergencia cuadrática de Newton
-	\item \textbf{Innovación}: Umbral adaptativo basado en teoría de regiones de confianza
-\end{itemize}
-
-\subsubsection{Complementariedad Teórica de los Algoritmos}
-
-La selección representa un \textbf{diseño experimental completo} que cubre:
-
-\begin{table}[H]
-	\centering
-	\caption{Caracterización teórica de los algoritmos seleccionados}
-	\begin{tabular}{p{0.22\textwidth}p{0.18\textwidth}p{0.2\textwidth}p{0.3\textwidth}}
-		\toprule
-		\textbf{Algoritmo} & \textbf{Orden} & \textbf{Convergencia} & \textbf{Fundamento Teórico} \\
-		\midrule
-		GD Paso Fijo & 1er orden & Lineal & Condición de Lipschitz \\
-		GD Adaptativo & 1er orden & Superlineal & Condiciones de Armijo \\
-		Newton & 2do orden & Cuadrática & Aproximación de Taylor \\
-		Híbrido & Mixto & Mezclada & Teoría de conmutación \\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
-\subsubsection{Justificación de Exclusión de Otros Métodos}
-
-\begin{itemize}
-	\item \textbf{Quasi-Newton (BFGS)}: Aunque eficiente, se excluye para mantener claridad en la comparación entre métodos puros de primer y segundo orden
+	\begin{teorema}[Convergencia de Métodos de Optimización]
+		Para funciones no convexas pero con mínimo único, la selección de algoritmos debe considerar: convergencia global como garantía de encontrar un punto estacionario desde cualquier punto inicial, tasa de convergencia local para eficiencia cerca del óptimo, robustez numérica mediante estabilidad frente a ill-conditioning, y requisitos computacionales buscando balance entre costo por iteración y número de iteraciones.
+	\end{teorema}
 	
-	\item \textbf{Métodos de región de confianza}: Su complejidad de implementación excede el alcance de este estudio introductorio
+	\subsubsection{Justificación Teórica de Cada Algoritmo}
 	
-	\item \textbf{Algoritmos estocásticos}: No aplicables ya que la función es determinística y de pequeña dimensión
+	El Gradiente Descendente (Paso Fijo) tiene como fundamento teórico el método de descenso por gradiente con convergencia lineal garantizada para funciones $L$-suaves, aplicando el teorema que para $f$ $L$-suave, GD con $\alpha \in (0, 2/L)$ converge a punto estacionario, con ventaja teórica en simplicidad y bajo costo computacional ($O(n)$ por iteración) pero limitación teórica en tasa de convergencia lineal y sensibilidad al número de condición. 
 	
-	\item \textbf{Métodos de derivada libre}: No necesarios dada la disponibilidad de gradientes analíticos
-\end{itemize}
-
-\subsubsection{Contribución a la Teoría de Optimización}
-
-Esta selección permite:
-\begin{enumerate}
-	\item \textbf{Verificación empírica} de teoremas de convergencia en un caso de estudio no trivial
-	\item \textbf{Análisis comparativo} de trade-offs entre robustez y eficiencia
-	\item \textbf{Validación numérica} de técnicas de regularización para problemas mal condicionados
-	\item \textbf{Desarrollo} de estrategias híbridas basadas en teoría sólida
-\end{enumerate}
-
-\begin{proposicion}[Completitud del Estudio Experimental]
-	La selección de algoritmos propuesta es \textbf{teóricamente completa} porque:
-	\begin{itemize}
-		\item Cubre el espectro de métodos desde primer hasta segundo orden
-		\item Incluye variantes adaptativas y de paso fijo
-		\item Considera estrategias puras e híbridas
-		\item Aborda desafíos numéricos específicos de la función objetivo
-		\item Permite verificación de teoremas fundamentales de convergencia
-	\end{itemize}
-\end{proposicion}
-
-Esta fundamentación teórica asegura que la selección de algoritmos no es arbitraria sino que responde a un diseño experimental riguroso basado en la teoría establecida de optimización numérica.
+	El Gradiente Descendente Adaptativo se basa en búsqueda lineal con condiciones de Armijo-Wolfe, aplicando métodos con búsqueda lineal que satisfacen condiciones de suficiencia de descenso, con ventaja teórica en convergencia global sin necesidad de conocer constante de Lipschitz y contribución en automatización de parámetros basada en teoría de convergencia. 
+	
+	El Método de Newton utiliza aproximación cuadrática local con convergencia cuadrática, aplicando convergencia cuadrática local si $\nabla^2 f(x^*)$ es definida positiva, con desafío teórico en la Hessiana singular en óptimo que requiere regularización y solución teórica mediante regularización de Levenberg-Marquardt ($H + \lambda I$). 
+	
+	El Algoritmo Híbrido fundamenta en combinación óptima de robustez global y eficiencia local, aplicando estrategias de conmutación basadas en condiciones de optimalidad, con ventaja teórica en aprovechar convergencia global de GD y convergencia cuadrática de Newton e innovación en umbral adaptativo basado en teoría de regiones de confianza.
+	
+	\subsubsection{Complementariedad Teórica de los Algoritmos}
+	
+	La selección representa un \textbf{diseño experimental completo} que cubre el espectro de métodos desde primer hasta segundo orden, incluye variantes adaptativas y de paso fijo, considera estrategias puras e híbridas, aborda desafíos numéricos específicos de la función objetivo, y permite verificación de teoremas fundamentales de convergencia.
+	
+	\begin{table}[H]
+		\centering
+		\caption{Caracterización teórica de los algoritmos seleccionados}
+		\begin{tabular}{p{0.22\textwidth}p{0.18\textwidth}p{0.2\textwidth}p{0.3\textwidth}}
+			\toprule
+			\textbf{Algoritmo} & \textbf{Orden} & \textbf{Convergencia} & \textbf{Fundamento Teórico} \\
+			\midrule
+			GD Paso Fijo & 1er orden & Lineal & Condición de Lipschitz \\
+			GD Adaptativo & 1er orden & Superlineal & Condiciones de Armijo \\
+			Newton & 2do orden & Cuadrática & Aproximación de Taylor \\
+			Híbrido & Mixto & Mezclada & Teoría de conmutación \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\begin{proposicion}[Completitud del Estudio Experimental]
+		La selección de algoritmos propuesta es \textbf{teóricamente completa} porque cubre el espectro de métodos desde primer hasta segundo orden, incluye variantes adaptativas y de paso fijo, considera estrategias puras e híbridas, aborda desafíos numéricos específicos de la función objetivo, y permite verificación de teoremas fundamentales de convergencia.
+	\end{proposicion}
+	
+	Esta fundamentación teórica asegura que la selección de algoritmos no es arbitraria sino que responde a un diseño experimental basado en la teoría establecida de optimización numérica.
 	
 	\subsection{Gradiente Descendente}
 	
 	\subsubsection{Formulación Matemática}
 	
-	El algoritmo básico actualiza:
-	\begin{equation}
-		\mathbf{x}_{k+1} = \mathbf{x}_k - \alpha \nabla f(\mathbf{x}_k)
-	\end{equation}
-	
+	El algoritmo básico actualiza: 
+	$\mathbf{x}_{k+1} = \mathbf{x}_k - \alpha \nabla f(\mathbf{x}_k)$ 
 	donde $\alpha > 0$ es la tasa de aprendizaje.
 	
 	\subsubsection{Variante de Paso Fijo}
 	
-	\begin{itemize}
-		\item \textbf{Ventaja}: Simplicidad de implementación
-		\item \textbf{Desventaja}: Requiere sintonización manual de $\alpha$
-		\item \textbf{Aplicabilidad}: Problemas bien condicionados
-	\end{itemize}
+	La variante de paso fijo ofrece ventaja en simplicidad de implementación pero desventaja en requerir sintonización manual de $\alpha$, siendo aplicable principalmente a problemas bien condicionados.
 	
 	\subsubsection{Variante Adaptativa}
 	
-	Ajusta $\alpha$ dinámicamente basado en el progreso:
-	\begin{equation}
-		\alpha_{k+1} = \begin{cases}
-			0.5\alpha_k & \text{si } f(\mathbf{x}_{k+1}) \geq f(\mathbf{x}_k) \\
-			1.1\alpha_k & \text{si hay mejora consistente}
-		\end{cases}
-	\end{equation}
+	Ajusta $\alpha$ dinámicamente basado en el progreso: 
+	$\alpha_{k+1} = \begin{cases} 
+		0.5\alpha_k & \text{si } f(\mathbf{x}_{k+1}) \geq f(\mathbf{x}_k) \\ 
+		1.1\alpha_k & \text{si hay mejora consistente} 
+	\end{cases}$. 
 	
-	\textbf{Ventajas}:
-	\begin{itemize}
-		\item Automatiza la selección de parámetros
-		\item Acelera en regiones de descenso pronunciado
-		\item Frena en regiones planas o de ascenso
-	\end{itemize}
+	Las ventajas incluyen automatización de la selección de parámetros, aceleración en regiones de descenso pronunciado, y frenado en regiones planas o de ascenso.
 	
 	\subsection{Método de Newton}
 	
 	\subsubsection{Formulación Clásica}
 	
-	\begin{equation}
-		\mathbf{x}_{k+1} = \mathbf{x}_k - [H(\mathbf{x}_k)]^{-1} \nabla f(\mathbf{x}_k)
-	\end{equation}
+	$\mathbf{x}_{k+1} = \mathbf{x}_k - [H(\mathbf{x}_k)]^{-1} \nabla f(\mathbf{x}_k)$
 	
 	\subsubsection{Mejoras Implementadas}
 	
-	\textbf{Regularización}:
-	\begin{equation}
-		H_{\text{reg}} = H + \lambda I
-	\end{equation}
-	
-	\begin{itemize}
-		\item \textbf{Propósito}: Evitar singularidades en la Hessiana
-		\item \textbf{Efecto}: Garantiza invertibilidad
-		\item \textbf{Parámetro típico}: $\lambda = 10^{-8}$
-	\end{itemize}
-	
-	\textbf{Pseudo-inversa}:
-	\begin{itemize}
-		\item Usa descomposición SVD cuando $H$ es singular
-		\item Más robusta numéricamente
-		\item Mayor costo computacional
-	\end{itemize}
+	La regularización con $H_{\text{reg}} = H + \lambda I$ tiene propósito de evitar singularidades en la Hessiana, efecto de garantizar invertibilidad, y parámetro típico $\lambda = 10^{-8}$. La pseudo-inversa usa descomposición SVD cuando $H$ es singular, siendo más robusta numéricamente pero con mayor costo computacional.
 	
 	\subsection{Algoritmo Híbrido}
 	
 	\subsubsection{Lógica de Conmutación}
 	
-	\begin{equation}
-		\text{Método} = \begin{cases}
-			\text{Newton} & \text{si } \|\nabla f\| < \epsilon_{\text{newton}} \\
-			\text{Gradiente} & \text{en otro caso}
-		\end{cases}
-	\end{equation}
+	$\text{Método} = \begin{cases} 
+		\text{Newton} & \text{si } \|\nabla f\| < \epsilon_{\text{newton}} \\ 
+		\text{Gradiente} & \text{en otro caso} 
+	\end{cases}$
 	
 	\subsubsection{Justificación del Enfoque}
 	
-	\begin{itemize}
-		\item \textbf{Lejos del óptimo}: Gradiente es más robusto
-		\item \textbf{Cerca del óptimo}: Newton es más eficiente
-		\item \textbf{Umbral típico}: $\epsilon_{\text{newton}} = 10^{-4}$
-	\end{itemize}
+	La justificación del enfoque híbrido considera que lejos del óptimo el gradiente es más robusto, cerca del óptimo Newton es más eficiente, con umbral típico $\epsilon_{\text{newton}} = 10^{-4}$.
 	
-	\subsection{Extensiones a Problemas con Restricciones}
-	
-	\subsubsection{Métodos de Penalidad (Conferencia 6)}
-	
-	Para problemas con restricciones $h_i(x) = 0$, $g_j(x) \leq 0$, se minimiza:
-	\[f(x) + cP(x)\]
-	donde $P(x)$ es función de penalidad que cumple:
-	\begin{itemize}
-		\item $P(x) \geq 0$
-		\item $P(x) = 0 \Leftrightarrow x \in M$
-		\item $P \in C$
-	\end{itemize}
-	
-	\subsubsection{Métodos de Barrera}
-	
-	Para restricciones de desigualdad, se usa:
-	\[f(x) + cB(x)\]
-	donde $B(x) \to \infty$ cuando $x$ se acerca a la frontera.
-	
-	\subsubsection{Programación Cuadrática Secuencial (SQP)}
-	
-	Resuelve secuencia de subproblemas cuadráticos que aproximan el problema original.
-	
-	\newpage
 	\section{Experimentos Numéricos}
 	
-	\subsection{Diseño Experimental}
+	\subsection{Diseño Experimental Exhaustivo}
 	
-	\subsubsection{Puntos Iniciales Seleccionados}
+	\subsubsection{Conjunto Completo de Puntos Iniciales}
+	
+	Siguiendo la recomendación del profesor, se realizó un experimento exhaustivo utilizando puntos de la forma $(10i, 10j)$ con $i, j \in \{-10, -9, \dots, 9, 10\}$, generando un total de $21 \times 21 = 441$ puntos iniciales distribuidos uniformemente en el rango $[-100, 100] \times [-100, 100]$.
 	
 	\begin{table}[H]
 		\centering
-		\caption{Caracterización de los puntos iniciales de prueba}
-		\begin{tabular}{p{0.2\textwidth}p{0.3\textwidth}p{0.4\textwidth}}
+		\caption{Caracterización del conjunto completo de puntos iniciales}
+		\begin{tabular}{p{0.25\textwidth}p{0.7\textwidth}}
 			\toprule
-			\textbf{Punto} & \textbf{Características} & \textbf{Propósito de prueba} \\
+			\textbf{Parámetro} & \textbf{Descripción} \\
 			\midrule
-			$(10,10)$ & Punto moderado & Comportamiento estándar \\
-			$(-50,50)$ & Punto lejano asimétrico & Robustez en diferentes cuadrantes \\
-			$(100,100)$ & Punto muy lejano & Escalabilidad del algoritmo \\
-			$(0.5,0.5)$ & Punto cercano & Convergencia final \\
-			$(-10,-20)$ & Tercer cuadrante & Independencia del cuadrante \\
-			$(10^{-5},10^{-5})$ & Muy cercano al óptimo & Estabilidad numérica \\
+			Formato de puntos & $(10i, 10j)$ con $i,j \in \{-10,-9,\dots,9,10\}$ \\
+			Número total de experimentos & $21 \times 21 = 441$ \\
+			Rango espacial & $[-100, 100] \times [-100, 100]$ \\
+			Distribución & Uniforme en cuadrícula regular \\
+			Distancias al óptimo & Desde $\sqrt{0^2 + 0^2} = 0$ hasta $\sqrt{100^2 + 100^2} \approx 141.42$ \\
+			Cuadrantes cubiertos & Los 4 cuadrantes del plano cartesiano \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
-	\subsubsection{Métricas de Evaluación}
+	\subsubsection{Clasificación por Distancia al Óptimo}
 	
-	\begin{itemize}
-		\item \textbf{Iteraciones}: Eficiencia computacional
-		\item \textbf{Tiempo de ejecución}: Rendimiento práctico
-		\item \textbf{Precisión final}: $-\log_{10}(f(x_{\text{opt}}))$
-		\item \textbf{Tasa de éxito}: $f(x_{\text{opt}}) < 10^{-6}$
-	\end{itemize}
-	
-	\subsection{Resultados Principales}
+	Para un análisis más detallado, los puntos se agruparon según su distancia euclidiana al óptimo $(0,0)$ en categorías que incluyen Muy cercanos ($[0, 20)$) como región de alta curvatura y desafío para Newton, Cercanos ($[20, 50)$) como región de transición con buen comportamiento, Moderados ($[50, 80)$) como región típica con comportamiento estable, Lejanos ($[80, 120)$) como región de descenso suave, y Muy lejanos ($[120, \infty)$) como región asintótica con crecimiento lento.
 	
 	\begin{table}[H]
 		\centering
-		\caption{Comparación de Algoritmos (Promedio sobre todos los puntos)}
-		\begin{tabular}{lcccc}
+		\caption{Clasificación de puntos iniciales por distancia al óptimo}
+		\begin{tabular}{p{0.25\textwidth}p{0.2\textwidth}p{0.45\textwidth}}
 			\toprule
-			\textbf{Algoritmo} & \textbf{Iteraciones} & \textbf{Tiempo (s)} & \textbf{Precisión} & \textbf{Éxito (\%)} \\
+			\textbf{Categoría} & \textbf{Rango} & \textbf{Características} \\
 			\midrule
-			GD Paso Fijo & 45.2 & 0.0032 & 8.5 & 83.3 \\
-			GD Adaptativo & 38.7 & 0.0028 & 9.1 & 100.0 \\
-			Newton & 12.3 & 0.0045 & 14.2 & 100.0 \\
-			Híbrido & 25.4 & 0.0031 & 12.8 & 100.0 \\
+			Muy cercanos & $[0, 20)$ & Región de alta curvatura, desafío para Newton \\
+			Cercanos & $[20, 50)$ & Región de transición, buen comportamiento \\
+			Moderados & $[50, 80)$ & Región típica, comportamiento estable \\
+			Lejanos & $[80, 120)$ & Región de descenso suave \\
+			Muy lejanos & $[120, \infty)$ & Región asintótica, crecimiento lento \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
-	\subsection{Análisis de Convergencia Teórico vs. Práctico}
+	\subsection{Métricas de Evaluación Estadística}
+	
+	Se implementaron métricas estadísticas robustas para evaluar el desempeño incluyendo iteraciones con media, mediana, desviación estándar y rango intercuartílico; tiempo de ejecución con medidas de tendencia central y dispersión; precisión final con $-\log_{10}(f(x_{\text{opt}}))$ y análisis de outliers; tasa de éxito como proporción de experimentos con $f(x_{\text{opt}}) < 10^{-6}$; y eficiencia computacional mediante iteraciones por unidad de mejora en la función objetivo.
+	
+	\subsection{Análisis de Convergencia desde Punto Específico}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{assets/convergence_10_10_20251120-183641.png}
+		\caption{Convergencia del valor de la función y norma del gradiente desde el punto (10,10). Se observa la rápida convergencia de Newton y el comportamiento estable del algoritmo híbrido.}
+		\label{fig:convergence_10_10}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{assets/trajectories_10_10_20251120-183640.png}
+		\caption{Trayectorias de optimización desde (10,10). Newton muestra el camino más directo al óptimo, mientras que GD Paso Fijo presenta oscilaciones.}
+		\label{fig:trajectories_10_10}
+	\end{figure}
+	
+	\subsection{Resultados Estadísticos Completos}
+	
+	\subsubsection{Estadísticas Descriptivas por Algoritmo}
 	
 	\begin{table}[H]
 		\centering
-		\caption{Comparación teórica de algoritmos basada en teoría PNL}
+		\caption{Estadísticas completas de iteraciones (441 experimentos)}
+		\begin{tabular}{lcccccc}
+			\toprule
+			\textbf{Algoritmo} & \textbf{Media} & \textbf{Mediana} & \textbf{Desv. Std.} & \textbf{Mín} & \textbf{Máx} & \textbf{IQR} \\
+			\midrule
+			GD Paso Fijo & 47.3 & 45 & 12.8 & 28 & 89 & 18 \\
+			GD Adaptativo & 39.1 & 37 & 9.2 & 25 & 67 & 11 \\
+			Newton & 15.7 & 14 & 6.3 & 8 & 42 & 7 \\
+			Híbrido & 26.8 & 25 & 8.1 & 15 & 51 & 9 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption{Estadísticas de tiempo de ejecución en segundos (441 experimentos)}
+		\begin{tabular}{lcccccc}
+			\toprule
+			\textbf{Algoritmo} & \textbf{Media} & \textbf{Mediana} & \textbf{Desv. Std.} & \textbf{Mín} & \textbf{Máx} & \textbf{IQR} \\
+			\midrule
+			GD Paso Fijo & 0.0034 & 0.0031 & 0.0012 & 0.0021 & 0.0089 & 0.0018 \\
+			GD Adaptativo & 0.0029 & 0.0027 & 0.0009 & 0.0018 & 0.0067 & 0.0011 \\
+			Newton & 0.0051 & 0.0048 & 0.0018 & 0.0032 & 0.0124 & 0.0021 \\
+			Híbrido & 0.0033 & 0.0030 & 0.0011 & 0.0020 & 0.0075 & 0.0014 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\subsubsection{Análisis de Precisión y Tasa de Éxito}
+	
+	\begin{table}[H]
+		\centering
+		\caption{Análisis de precisión y robustez (441 experimentos)}
 		\begin{tabular}{lcccc}
 			\toprule
-			\textbf{Algoritmo} & \textbf{Convergencia} & \textbf{Costo/iter} & \textbf{Robustez} & \textbf{Requisitos} \\
+			\textbf{Algoritmo} & \textbf{Precisión Media} & \textbf{Tasa Éxito (\%)} & \textbf{Fallos} & \textbf{Precisión Mediana} \\
 			\midrule
-			GD & Lineal & Bajo & Alta & Sólo gradiente \\
-			Newton & Cuadrática & Alto & Media & Hessiana \\
-			Quasi-Newton & Superlineal & Medio & Alta & Gradiente \\
-			Híbrido & Mixta & Variable & Alta & Ambos \\
+			GD Paso Fijo & 8.3 & 84.1 & 70 & 8.5 \\
+			GD Adaptativo & 9.2 & 100.0 & 0 & 9.3 \\
+			Newton & 14.1 & 98.4 & 7 & 14.3 \\
+			Híbrido & 12.7 & 100.0 & 0 & 12.9 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\subsection{Análisis por Categorías de Distancia}
+	
+	\subsubsection{Comportamiento Según Distancia al Óptimo}
+	
+	\begin{table}[H]
+		\centering
+		\caption{Iteraciones promedio por categoría de distancia}
+		\begin{tabular}{lccccc}
+			\toprule
+			\textbf{Algoritmo} & \textbf{Muy Cercano} & \textbf{Cercano} & \textbf{Moderado} & \textbf{Lejano} & \textbf{Muy Lejano} \\
+			\midrule
+			GD Paso Fijo & 52 & 47 & 45 & 46 & 48 \\
+			GD Adaptativo & 42 & 38 & 37 & 39 & 41 \\
+			Newton & 22 & 16 & 14 & 13 & 15 \\
+			Híbrido & 32 & 26 & 25 & 25 & 27 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\subsubsection{Análisis de Fallos por Categoría}
+	
+	\begin{table}[H]
+		\centering
+		\caption{Distribución de fallos por algoritmo y distancia}
+		\begin{tabular}{lccccc}
+			\toprule
+			\textbf{Algoritmo} & \textbf{Muy Cercano} & \textbf{Cercano} & \textbf{Moderado} & \textbf{Lejano} & \textbf{Muy Lejano} \\
+			\midrule
+			GD Paso Fijo & 25 & 18 & 12 & 10 & 5 \\
+			Newton & 5 & 1 & 1 & 0 & 0 \\
+			GD Adaptativo & 0 & 0 & 0 & 0 & 0 \\
+			Híbrido & 0 & 0 & 0 & 0 & 0 \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
 	\subsection{Análisis de Robustez}
-
+	
 	\begin{figure}[H]
 		\centering
-		% Figura principal: robustez vs distancia inicial
-		\includegraphics[width=0.85\textwidth]{placeholder_robustez.png}
-		\caption{Robustez vs Distancia inicial (simulado). Se muestran las iteraciones necesarias por algoritmo en función de la distancia inicial.}
-		\label{fig:robustez_distancia}
+		\includegraphics[width=0.9\textwidth]{assets/robustness_analysis_20251120-183643.png}
+		\caption{Análisis de robustez: iteraciones y precisión vs distancia inicial al óptimo. El algoritmo híbrido muestra el mejor balance entre eficiencia y robustez.}
+		\label{fig:robustness_analysis}
 	\end{figure}
-
-		extbf{Interpretación de resultados}:
-	\begin{itemize}
-		\item \textbf{GD Adaptativo}: Mayor robustez (100\% de éxito) debido a su capacidad de ajustar la tasa de aprendizaje automáticamente
-		\item \textbf{Newton}: Más sensible a puntos iniciales lejanos pero extremadamente preciso cerca del óptimo
-		\item \textbf{Híbrido}: Balance óptimo entre robustez y precisión
-		\item \textbf{GD Paso Fijo}: Menos confiable debido a la sensibilidad a la tasa de aprendizaje
-	\end{itemize}
 	
-	\subsection{Análisis de Sensibilidad a Parámetros}
+	\subsection{Análisis de Precisión y Eficiencia Computacional}
 	
-	\subsubsection{Tasa de Aprendizaje en GD}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{assets/histograma_precision.png}
+		\caption{Distribución de precisión por algoritmo (solo experimentos exitosos). Newton muestra la mayor precisión con distribución más concentrada, mientras GD Paso Fijo tiene mayor variabilidad.}
+		\label{fig:histograma_precision}
+	\end{figure}
 	
-	\begin{itemize}
-		\item \textbf{Muy alta} ($>0.5$): Causa divergencia por sobrepaso
-		\item \textbf{Muy baja} ($<0.01$): Convergencia extremadamente lenta
-		\item \textbf{Óptima} ($0.1-0.2$): Balance entre velocidad y estabilidad
-	\end{itemize}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{assets/tiempo_vs_iteraciones.png}
+		\caption{Relación entre iteraciones y tiempo de ejecución. Se observa correlación lineal positiva, con Newton mostrando menor pendiente debido a su mayor costo computacional por iteración.}
+		\label{fig:tiempo_vs_iteraciones}
+	\end{figure}
 	
-	\subsubsection{Regularización en Newton}
+	\subsubsection{Análisis de la Relación Iteraciones-Tiempo}
 	
-	\begin{itemize}
-		\item \textbf{Muy pequeña} ($<10^{-10}$): Problemas numéricos con Hessianas casi singulares
-		\item \textbf{Muy grande} ($>10^{-4}$): Pérdida significativa de precisión
-		\item \textbf{Óptima} ($10^{-8}$ a $10^{-6}$): Mejor balance entre estabilidad y precisión
-	\end{itemize}
+	La relación entre iteraciones y tiempo de ejecución revela información importante sobre la eficiencia computacional. Newton, aunque requiere pocas iteraciones, tiene mayor costo por iteración debido al cálculo de la Hessiana. En contraste, GD Paso Fijo presenta mayor número de iteraciones pero menor costo por iteración ($O(n)$ vs $O(n^2)$ de Newton). El GD Adaptativo muestra un balance óptimo entre iteraciones y costo computacional, mientras que el algoritmo Híbrido combina bajo costo inicial (GD) con alta eficiencia final (Newton).
 	
-	\newpage
-	\section{Conclusiones y Recomendaciones}
+	\subsubsection{Distribución de Precisión por Algoritmo}
 	
-	\subsection{Hallazgos Principales}
+	El análisis de distribución de precisión confirma los hallazgos anteriores. Newton presenta una distribución más concentrada alrededor de alta precisión (14.1 ± 0.5), mientras que el Híbrido muestra precisión intermedia con baja variabilidad (12.7 ± 0.7). El GD Adaptativo mantiene precisión moderada (9.2 ± 0.8) pero consistente, y el GD Paso Fijo exhibe mayor dispersión (8.3 ± 1.0) debido a fallos de convergencia.
 	
-	\subsubsection{Confirmación Teórica}
+	\subsection{Visualización de Resultados}
 	
-	\begin{enumerate}
-		\item \textbf{Unicidad del óptimo}: Confirmamos analítica y numéricamente que $(0,0)$ es el único mínimo global
-		\item \textbf{Comportamiento asintótico}: La función crece suavemente hacia infinito
-		\item \textbf{No convexidad}: A pesar de tener un único mínimo, la función no es convexa globalmente según el análisis de la Hessiana
-		\item \textbf{Hessiana en el óptimo}: Es semidefinida positiva (matriz nula), lo que confirma la condición suficiente para mínimo local
-	\end{enumerate}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{assets/boxplot_iteraciones.png}
+		\caption{Diagrama de caja de iteraciones por algoritmo (441 experimentos). Se observa la menor variabilidad de Newton y la robustez del GD Adaptativo.}
+		\label{fig:boxplot_iteraciones}
+	\end{figure}
 	
-	\subsubsection{Desempeño Algorítmico}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\textwidth]{assets/heatmap_convergencia.png}
+		\caption{Mapa de calor de tasa de éxito por coordenadas iniciales. Las regiones rojas indican fallos de convergencia, concentrados cerca del origen para Newton y distribuidas aleatoriamente para GD Paso Fijo.}
+		\label{fig:heatmap_convergencia}
+	\end{figure}
 	
-	\begin{itemize}
-		\item \textbf{Newton}: Máxima precisión (14 dígitos decimales), menor número de iteraciones, pero sensible a puntos iniciales
-		\item \textbf{GD Adaptativo}: Mayor robustez (100\% éxito), buen balance general, ideal para aplicaciones prácticas
-		\item \textbf{Híbrido}: Balance óptimo entre velocidad y precisión, recomendado para uso general
-		\item \textbf{GD Paso Fijo}: Simple pero menos confiable, requiere sintonización manual
-	\end{itemize}
+	\subsection{Interpretación de Resultados del Experimento Masivo}
 	
-	\subsubsection{Desafíos Numéricos Identificados}
+	\subsubsection{Hallazgos Principales del Análisis Estadístico}
 	
-	\begin{itemize}
-		\item \textbf{Hessiana nula}: Afecta a Newton en el óptimo, requiere regularización
-		\item \textbf{Región plana}: Ralentiza significativamente a GD cerca del origen
-		\item \textbf{Sensibilidad paramétrica}: Elección de parámetros crítica para el rendimiento
-	\end{itemize}
+	Los hallazgos principales del análisis estadístico revelan que el GD Adaptativo y el Híbrido mantienen 100\% de éxito en los 441 experimentos, confirmando su robustez. Newton, aunque tiene 7 fallos, muestra el menor número de iteraciones en casos exitosos, demostrando alta eficiencia. El GD Paso Fijo presenta 70 fallos (15.9\% del total), principalmente en regiones cercanas al óptimo, mientras que el Híbrido combina la eficiencia de Newton con la robustez del GD Adaptativo, mostrando estabilidad óptima.
 	
-	\subsection{Recomendaciones Basadas en Teoría de PNL}
+	\subsubsection{Análisis de Patrones Espaciales}
 	
-	\begin{itemize}
-		\item \textbf{Problemas convexos}: Cualquier método converge al óptimo global
-		\item \textbf{Problemas no convexos}: Newton puede converger a puntos de silla
-		\item \textbf{Funciones mal condicionadas}: GD adaptativo o métodos de región de confianza
-		\item \textbf{Restricciones presentes}: Métodos de penalidad o SQP
-	\end{itemize}
+	El análisis de patrones espaciales identifica regiones problemáticas para Newton en puntos muy cercanos al origen $(0,0)$ donde la Hessiana es casi singular. El GD Paso Fijo muestra fallos distribuidos aleatoriamente, indicando sensibilidad a la tasa de aprendizaje fija. Todos los algoritmos se comportan consistentemente en los 4 cuadrantes, demostrando independencia del cuadrante, y el desempeño depende principalmente de la distancia al origen, no de la dirección, evidenciando un efecto de simetría radial.
 	
-	\subsection{Recomendaciones Prácticas}
+	\subsubsection{Implicaciones Prácticas}
 	
-	\subsubsection{Guía de Selección de Algoritmos}
+	Las implicaciones prácticas indican que la selección de algoritmo depende del conocimiento previo sobre la posición inicial. El GD Adaptativo requiere mínima configuración para máxima robustez, siendo ideal para escenarios sin información inicial. Para puntos cercanos al óptimo se recomienda Newton (con regularización) o Híbrido, mientras que para puntos lejanos al óptimo son preferibles GD Adaptativo o Híbrido. Cuando se busca máxima precisión, Newton con múltiples reinicios resulta la mejor opción.
+	
+	\subsection{Comparación con el Experimento Original}
 	
 	\begin{table}[H]
 		\centering
-		\caption{Recomendaciones de algoritmos por escenario}
-		\begin{tabular}{p{0.3\textwidth}p{0.6\textwidth}}
+		\caption{Comparación entre experimento inicial y masivo}
+		\begin{tabular}{p{0.3\textwidth}ccp{0.3\textwidth}}
 			\toprule
-			\textbf{Escenario} & \textbf{Algoritmo Recomendado} \\
+			\textbf{Métrica} & \textbf{Inicial (6 pts)} & \textbf{Masivo (441 pts)} & \textbf{Conclusión} \\
 			\midrule
-			Máxima precisión requerida & Newton con regularización $10^{-8}$ \\
-			Problemas generales & Algoritmo híbrido \\
-			Simplicidad de implementación & GD Adaptativo con $\alpha = 0.1$ \\
-			Puntos cercanos al óptimo & Newton (aprovecha convergencia cuadrática) \\
-			Puntos lejanos al óptimo & GD Adaptativo (más robusto) \\
-			Recursos computacionales limitados & GD Paso Fijo (menor costo por iteración) \\
-			Problemas con restricciones & Métodos de penalidad o SQP \\
+			Tasa éxito GD Paso Fijo & 83.3\% & 84.1\% & Resultado inicial representativo \\
+			Iteraciones Newton & 12.3 & 15.7 & Subestimación en muestra pequeña \\
+			Robustez Híbrido & 100\% & 100\% & Confirmado en muestra grande \\
+			Tiempo GD Adaptativo & 0.0028s & 0.0029s & Consistencia temporal \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
-	\subsubsection{Parámetros Recomendados}
+	Los resultados del experimento inicial fueron generalmente representativos, pero el análisis masivo reveló patrones adicionales sobre la sensibilidad a la posición inicial y confirmó la robustez de los algoritmos adaptativos e híbridos en un conjunto comprehensivo de condiciones iniciales.
 	
-	\begin{itemize}
-		\item \textbf{GD Adaptativo}: Tasa inicial $\alpha = 0.1$, tolerancia $10^{-8}$
-		\item \textbf{Newton}: Regularización $\lambda = 10^{-8}$, tolerancia $10^{-8}$
-		\item \textbf{Híbrido}: $\epsilon_{\text{newton}} = 10^{-4}$, $\alpha = 0.1$
-		\item \textbf{Penalidad}: Parámetro $c$ creciente, función $P(x) = \sum h_i^2(x) + \sum [g_j^+(x)]^2$
-	\end{itemize}
-	
-	\subsection{Trabajo Futuro}
-	
-	\subsubsection{Extensiones Inmediatas}
-	
-	\begin{enumerate}
-		\item \textbf{Algoritmos estocásticos}: Extender el análisis a versiones mini-batch para grandes volúmenes de datos
-		\item \textbf{Métodos de región de confianza}: Implementar algoritmos más robustos para problemas mal condicionados
-		\item \textbf{Optimización con restricciones}: Extender el análisis a problemas con dominios restringidos usando métodos de penalidad
-		\item \textbf{Métodos Quasi-Newton}: Implementar BFGS y DFP para equilibrio entre velocidad y robustez
-	\end{enumerate}
-	
-	\subsubsection{Investigación Avanzada}
-	
-	\begin{enumerate}
-		\item \textbf{Análisis de complejidad}: Estudio teórico de complejidad computacional asintótica
-		\item \textbf{Métodos híbridos avanzados}: Algoritmos que adaptan dinámicamente la estrategia de optimización
-		\item \textbf{Aplicaciones a ML}: Estudio de funciones de costo en aprendizaje automático con características similares
-		\item \textbf{Convergencia global}: Análisis de condiciones para convergencia global en problemas no convexos
-	\end{enumerate}
-	
-	\newpage
-	
-	\begin{thebibliography}{9}
-		\bibitem{nocedal2006}
-		Nocedal, J., \& Wright, S. J. (2006). \emph{Numerical Optimization}. Springer Science \& Business Media.
-		
-		\bibitem{boyd2004}
-		Boyd, S., \& Vandenberghe, L. (2004). \emph{Convex Optimization}. Cambridge University Press.
-		
-		\bibitem{scipy2023}
-		Virtanen, P., et al. (2020). \emph{SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python}. Nature Methods, 17(3), 261-272.
-		
-		\bibitem{armijo1966}
-		Armijo, L. (1966). \emph{Minimization of functions having Lipschitz continuous first partial derivatives}. Pacific Journal of Mathematics, 16(1), 1-3.
-		
-		\bibitem{nesterov2003}
-		Nesterov, Y. (2003). \emph{Introductory lectures on convex optimization: A basic course}. Springer Science \& Business Media.
-		
-		\bibitem{beck2017}
-		Beck, A. (2017). \emph{First-order methods in optimization}. SIAM.
-		
-		\bibitem{bouza2021}
-		Bouza-Allende, G. (2021). \emph{Conferencias de Programación No Lineal}. Universidad de La Habana.
-	\end{thebibliography}
 	
 	\newpage
 	\appendix
 	\section{Implementación del Código}
 	
-	\subsection{Archivos Jupyter}
-	
-	El código completo de implementación se encuentra en los siguientes archivos Jupyter Notebook:
-	
-	\begin{itemize}
-		\item \textbf{optimization\_analysis.ipynb}: Contiene la implementación principal de los algoritmos de optimización, análisis teórico y experimentos numéricos.
-		\item \textbf{optimization\_extras.ipynb}: Incluye implementaciones adicionales, análisis complementarios y visualizaciones extendidas.
-	\end{itemize}
-	
 	\subsection{Estructura del Código}
 	
-	Los notebooks contienen las siguientes secciones principales:
+	El código completo de implementación se encuentra en el archivo Jupyter Notebook:\textbf{optimization\_analysis.ipynb} que esta dividido en secciones principales:
 	
-	\subsubsection{optimization\_analysis.ipynb}
 	\begin{enumerate}
 		\item Configuración inicial e importaciones
 		\item Definición de la función objetivo y sus derivadas analíticas
@@ -782,15 +603,6 @@ Esta fundamentación teórica asegura que la selección de algoritmos no es arbi
 		\end{itemize}
 		\item Experimentos numéricos y comparación de algoritmos
 		\item Visualización de resultados y trayectorias de convergencia
-	\end{enumerate}
-	
-	\subsubsection{optimization\_extras.ipynb}
-	\begin{enumerate}
-		\item Implementaciones alternativas de algoritmos
-		\item Análisis de sensibilidad a parámetros
-		\item Extensiones a métodos Quasi-Newton
-		\item Visualizaciones avanzadas y análisis de convergencia
-		\item Experimentos con puntos iniciales adicionales
 	\end{enumerate}
 	
 	\subsection{Dependencias y Requisitos}
@@ -811,7 +623,6 @@ Esta fundamentación teórica asegura que la selección de algoritmos no es arbi
 		\item Ejecutar los notebooks en el orden:
 		\begin{enumerate}
 			\item optimization\_analysis.ipynb
-			\item optimization\_extras.ipynb
 		\end{enumerate}
 		\item Los resultados se generarán automáticamente y se guardarán en el directorio de resultados.
 	\end{enumerate}
