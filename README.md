@@ -1,6 +1,6 @@
  # Proyecto: Análisis de Optimización
 
-Este repositorio contiene notebook y recursos para el análisis numérico de la función
+Este repositorio contiene recursos para el análisis numérico de la función
 f(x,y) = log(x^2 + y^2 + 1) * arctan(x^2 + y^2) y experimentación con distintos algoritmos de
 optimización (Gradiente, Newton, Quasi-Newton, Trust-Region, métodos de penalidad, etc.).
 
