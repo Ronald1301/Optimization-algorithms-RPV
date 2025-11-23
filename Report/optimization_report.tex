@@ -49,7 +49,6 @@
 
 \title{Análisis Teórico y Numérico de la Optimización de \\ $f(x, y) = \log(x^2 + y^2 + 1) \cdot \arctan(x^2 + y^2)$}
 \author{Ronald Provance Valladares \\ Grupo: C-312}
-\date{\today}
 
 \begin{document}
 	
@@ -281,7 +280,7 @@
 	
 	El Gradiente Descendente Adaptativo se basa en búsqueda lineal con condiciones de Armijo-Wolfe, aplicando métodos con búsqueda lineal que satisfacen condiciones de suficiencia de descenso, con ventaja teórica en convergencia global sin necesidad de conocer constante de Lipschitz y contribución en automatización de parámetros basada en teoría de convergencia. 
 	
-	El Método de Newton utiliza aproximación cuadrática local con convergencia cuadrática, aplicando convergencia cuadrática local si $\nabla^2 f(x^*)$ es definida positiva, con desafío teórico en la Hessiana singular en óptimo que requiere regularización y solución teórica mediante regularización de Levenberg-Marquardt ($H + \lambda I$). 
+	El Método de Newton utiliza la Hessiana exacta $\nabla^2 f(x_k)$ para calcular la dirección de descenso resolviendo $\nabla^2 f(x_k) d_k = -\nabla f(x_k)$, aplicando el teorema de convergencia cuadrática local cuando $\nabla^2 f(x^*)$ es definida positiva y $x_k$ está suficientemente cercano al óptimo. El desafío teórico en la Hessiana singular en el óptimo requiere regularización, con solución teórica mediante regularización de Levenberg-Marquardt ($H + \lambda I$).
 	
 	El Algoritmo Híbrido fundamenta en combinación óptima de robustez global y eficiencia local, aplicando estrategias de conmutación basadas en condiciones de optimalidad, con ventaja teórica en aprovechar convergencia global de GD y convergencia cuadrática de Newton e innovación en umbral adaptativo basado en teoría de regiones de confianza.
 	
@@ -361,7 +360,7 @@
 	
 	\subsubsection{Conjunto Completo de Puntos Iniciales}
 	
-	Siguiendo la recomendación del profesor, se realizó un experimento exhaustivo utilizando puntos de la forma $(10i, 10j)$ con $i, j \in \{-10, -9, \dots, 9, 10\}$, generando un total de $21 \times 21 = 441$ puntos iniciales distribuidos uniformemente en el rango $[-100, 100] \times [-100, 100]$.
+	Se realizó un experimento exhaustivo utilizando puntos de la forma $(10i, 10j)$ con $i, j \in \{-10, -9, \dots, 9, 10\}$, generando un total de $21 \times 21 = 441$ puntos iniciales distribuidos uniformemente en el rango $[-100, 100] \times [-100, 100]$.
 	
 	\begin{table}[H]
 		\centering
@@ -382,20 +381,22 @@
 	
 	\subsubsection{Clasificación por Distancia al Óptimo}
 	
-	Para un análisis más detallado, los puntos se agruparon según su distancia euclidiana al óptimo $(0,0)$ en categorías que incluyen Muy cercanos ($[0, 20)$) como región de alta curvatura y desafío para Newton, Cercanos ($[20, 50)$) como región de transición con buen comportamiento, Moderados ($[50, 80)$) como región típica con comportamiento estable, Lejanos ($[80, 120)$) como región de descenso suave, y Muy lejanos ($[120, \infty)$) como región asintótica con crecimiento lento.
+	Para un análisis más detallado, los puntos se agruparon según su distancia euclidiana al óptimo $(0,0)$ en categorías que incluyen Muy cercanos ($[0, 20)$) como región de alta curvatura y desafío para Newton, Cercanos ($[20, 50)$) como región de transición con buen comportamiento, Moderados ($[50, 80)$) como región típica con comportamiento estable, Lejanos ($[80, 120)$) como región de descenso suave, y Muy lejanos ($[120, 141.42]$)  como región asintótica con crecimiento lento.
 	
 	\begin{table}[H]
 		\centering
 		\caption{Clasificación de puntos iniciales por distancia al óptimo}
-		\begin{tabular}{p{0.25\textwidth}p{0.2\textwidth}p{0.45\textwidth}}
+		\begin{tabular}{p{0.22\textwidth}p{0.25\textwidth}p{0.43\textwidth}}
 			\toprule
 			\textbf{Categoría} & \textbf{Rango} & \textbf{Características} \\
+			& \textbf{(unidades de }& \\
+			& \textbf{ distancia) } & \\
 			\midrule
 			Muy cercanos & $[0, 20)$ & Región de alta curvatura, desafío para Newton \\
 			Cercanos & $[20, 50)$ & Región de transición, buen comportamiento \\
 			Moderados & $[50, 80)$ & Región típica, comportamiento estable \\
 			Lejanos & $[80, 120)$ & Región de descenso suave \\
-			Muy lejanos & $[120, \infty)$ & Región asintótica, crecimiento lento \\
+			Muy lejanos & $[120, 141.42]$ & Región asintótica, crecimiento lento \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
@@ -409,16 +410,10 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\textwidth]{assets/convergence_analysis.png}
-		\caption{Convergencia del valor de la función y norma del gradiente desde el punto (10,10). Se observa la rápida convergencia de Newton y el comportamiento estable del algoritmo híbrido.}
+		\caption{Convergencia del valor de la función y norma del gradiente desde el punto (10,10). Se observa la rápida convergencia de Newton con decrecimiento súper-lineal del valor de la función, consistente con la teoría de convergencia de Newton. El método de Gradiente Descendente muestra decrecimiento lineal, como predice la teoría para el método de máximo descenso. La norma del gradiente decrece más rápidamente en Newton, indicando mayor eficiencia en alcanzar puntos estacionarios. El algoritmo híbrido mantiene un comportamiento estable combinando ambas estrategias.}
 		\label{fig:convergence_10_10}
 	\end{figure}
 	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\textwidth]{assets/optimization_trajectories.png}
-		\caption{Trayectorias de optimización desde (10,10). Newton muestra el camino más directo al óptimo, mientras que GD Paso Fijo presenta oscilaciones.}
-		\label{fig:trajectories_10_10}
-	\end{figure}
 	
 	\subsection{Resultados Estadísticos Completos}
 	
@@ -516,6 +511,10 @@
 		\label{fig:robustness_analysis}
 	\end{figure}
 	
+	
+	
+	
+	
 	\subsection{Análisis de Precisión y Eficiencia Computacional}
 	
 	\begin{figure}[H]
@@ -544,14 +543,14 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\textwidth]{assets/boxplot_iteraciones.png}
+		\includegraphics[width=1\textwidth]{assets/boxplot_iteraciones.png}
 		\caption{Diagrama de caja de iteraciones por algoritmo (441 experimentos). Se observa la menor variabilidad de Newton y la robustez del GD Adaptativo.}
 		\label{fig:boxplot_iteraciones}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\textwidth]{assets/massive_experiment_results.png}
+		\includegraphics[width=1\textwidth]{assets/massive_experiment_results.png}
 		\caption{Comparativa del rendimiento de los algoritmos de optimización seleccionados.}
 		\label{fig:massive_experiment_results}
 	\end{figure}
@@ -596,6 +595,26 @@
 	
 	Los resultados del experimento inicial fueron generalmente representativos, pero el análisis masivo reveló patrones adicionales sobre la sensibilidad a la posición inicial y confirmó la robustez de los algoritmos adaptativos e híbridos en un conjunto comprehensivo de condiciones iniciales.
 	
+		
+	\subsubsection{Tabla de Comparación Completa}
+	
+	\begin{table}[H]
+		\centering
+		\caption{Comparación completa de algoritmos en todas las métricas (441 experimentos)}
+		\begin{tabular}{p{0.2\textwidth}ccccp{0.18\textwidth}}
+			\toprule
+			\textbf{Métrica} & \textbf{GD Paso Fijo} & \textbf{GD Adaptativo} & \textbf{Newton} & \textbf{Híbrido} & \textbf{Mejor} \\
+			\midrule
+			\shortstack{Iteraciones \\ (media)} & 47.3 & 39.1 & 15.7 & 26.8 & Newton \\[0.5em]
+			\shortstack{Tasa de éxito \\ (\%)} & 84.1 & 100.0 & 98.4 & 100.0 & \shortstack{GD Adaptativo \\ Híbrido} \\[0.5em]
+			\shortstack{Precisión final \\ ($-\log_{10}(f)$)} & 8.3 & 9.2 & 14.1 & 12.7 & Newton \\[0.5em]
+			\shortstack{Tiempo (s) \\ computacional} & 0.0034 & 0.0029 & 0.0051 & 0.0033 & GD Adaptativo \\[0.5em]
+			\shortstack{Robustez \\ numérica} & Baja & Alta & Media & Alta & \shortstack{GD Adaptativo \\ Híbrido} \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\textbf{Conclusión}: Cada algoritmo tiene ventajas en diferentes métricas. Newton es el más eficiente en iteraciones y precisión, GD Adaptativo es el más rápido y robusto, mientras que el algoritmo Híbrido ofrece el mejor balance general. La "mejor" elección depende del criterio prioritario del usuario.
 	
 	\newpage
 	\appendix

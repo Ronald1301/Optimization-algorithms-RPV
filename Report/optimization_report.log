@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.15)  20 NOV 2025 23:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.15)  23 NOV 2025 04:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -567,26 +567,26 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `optimization_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Info: Redefining \. on input line 54.
-LaTeX Info: Redefining \% on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Info: Redefining \. on input line 53.
+LaTeX Info: Redefining \% on input line 53.
 
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
@@ -621,18 +621,18 @@ G,.JBIG2,.JB2,.eps]
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 54.
+Package hyperref Info: Link coloring OFF on input line 53.
  (optimization_report.out) (optimization_report.out)
 \@outlinefile=\write3
 \openout3 = `optimization_report.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 54.
-Package microtype Info: Applying patch `item' on input line 54.
-Package microtype Info: Applying patch `toc' on input line 54.
-Package microtype Info: Applying patch `eqnum' on input line 54.
-Package microtype Info: Applying patch `footnote' on input line 54.
-Package microtype Info: Applying patch `verbatim' on input line 54.
-LaTeX Info: Redefining \microtypesetup on input line 54.
+LaTeX Info: Redefining \microtypecontext on input line 53.
+Package microtype Info: Applying patch `item' on input line 53.
+Package microtype Info: Applying patch `toc' on input line 53.
+Package microtype Info: Applying patch `eqnum' on input line 53.
+Package microtype Info: Applying patch `footnote' on input line 53.
+Package microtype Info: Applying patch `verbatim' on input line 53.
+LaTeX Info: Redefining \microtypesetup on input line 53.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -686,35 +686,35 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
-7.
+6.
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
-7.
+6.
 
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-57.
+56.
 
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-57.
+56.
 
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 57.
+(Font)              <20.74> on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 57.
+(Font)              <14.4> on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 57.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
+(Font)              <12> on input line 56.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
 
 
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -723,7 +723,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
 
 
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -733,17 +733,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 57.
+(Font)              <10> on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 57.
+(Font)              <7> on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 59.
+(Font)              <10.95> on input line 58.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 59.
+(Font)              <8> on input line 58.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 59.
+(Font)              <6> on input line 58.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-2.
+1.
 
 (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -753,7 +753,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (46.6028pt too wide) in paragraph at lines 62--63
+Overfull \hbox (46.6028pt too wide) in paragraph at lines 61--62
 []\T1/lmr/bx/n/12 (-20) Repositorio de có-di-go: []$\T1/lmtt/m/n/12 https : / /
  github . com / Ronald1301 / Optimization-[]algorithms-[]RPV .
  []
@@ -765,129 +765,127 @@ R/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/TIGER/Ap
 pData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/TIGER/Ap
 pData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/TIGER/AppDat
 a/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-<assets/function_3d.png, id=271, 449.5194pt x 390.7398pt>
+<assets/function_3d.png, id=275, 449.5194pt x 390.7398pt>
 File: assets/function_3d.png Graphic file (type png)
 <use assets/function_3d.png>
-Package pdftex.def Info: assets/function_3d.png  used on input line 77.
+Package pdftex.def Info: assets/function_3d.png  used on input line 76.
 (pdftex.def)             Requested size: 386.96027pt x 336.36952pt.
-<assets/contour_plot.png, id=273, 602.25pt x 511.6716pt>
+<assets/contour_plot.png, id=277, 602.25pt x 511.6716pt>
 File: assets/contour_plot.png Graphic file (type png)
 <use assets/contour_plot.png>
-Package pdftex.def Info: assets/contour_plot.png  used on input line 84.
+Package pdftex.def Info: assets/contour_plot.png  used on input line 83.
 (pdftex.def)             Requested size: 386.96027pt x 328.77255pt.
  [2 <./assets/function_3d.png>] [3 <./assets/contour_plot.png>] [4{C:/Users/TIG
 ER/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 183.
+(hyperref)                removing `math shift' on input line 182.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 183.
+(hyperref)                removing `math shift' on input line 182.
 
 [5] [6] [7]
-Overfull \hbox (2.47278pt too wide) in paragraph at lines 295--305
+Overfull \hbox (2.47278pt too wide) in paragraph at lines 294--304
  [][] 
  []
 
 [8]
-Overfull \hbox (15.53607pt too wide) in paragraph at lines 327--332
+Overfull \hbox (15.53607pt too wide) in paragraph at lines 326--331
 []\T1/lmr/m/n/12 (-20) Ajusta $\OML/lmm/m/it/12 $ \T1/lmr/m/n/12 (-20) di-ná-m
 i-ca-men-te ba-sa-do en el pro-gre-so: $\OML/lmm/m/it/12 [] \OT1/lmr/m/n/12 (-
 20) = []$\T1/lmr/m/n/12 (-20) . 
  []
 
 [9]
-Overfull \hbox (1.23639pt too wide) in paragraph at lines 369--381
+Overfull \hbox (1.23639pt too wide) in paragraph at lines 368--380
  [][] 
  []
 
 [10]
-<assets/convergence_analysis.png, id=344, 1070.5596pt x 346.896pt>
+<assets/convergence_analysis.png, id=348, 1070.5596pt x 346.896pt>
 File: assets/convergence_analysis.png Graphic file (type png)
 <use assets/convergence_analysis.png>
 Package pdftex.def Info: assets/convergence_analysis.png  used on input line 41
-1.
+2.
 (pdftex.def)             Requested size: 409.71692pt x 132.76402pt.
-<assets/optimization_trajectories.png, id=345, 727.9998pt x 622.4856pt>
-File: assets/optimization_trajectories.png Graphic file (type png)
-<use assets/optimization_trajectories.png>
-Package pdftex.def Info: assets/optimization_trajectories.png  used on input li
-ne 418.
-(pdftex.def)             Requested size: 409.71692pt x 350.34676pt.
- [11 <./assets/convergence_analysis.png>] [12 <./assets/optimization_trajectori
-es.png>]
-Overfull \hbox (14.0913pt too wide) in paragraph at lines 462--472
+ [11]
+Overfull \hbox (14.0913pt too wide) in paragraph at lines 457--467
  [][] 
  []
 
-<assets/robustness_analysis.png, id=360, 1288.3332pt x 854.2314pt>
+[12 <./assets/convergence_analysis.png>]
+<assets/robustness_analysis.png, id=362, 1790.69pt x 1188.44pt>
 File: assets/robustness_analysis.png Graphic file (type png)
 <use assets/robustness_analysis.png>
-Package pdftex.def Info: assets/robustness_analysis.png  used on input line 514
+Package pdftex.def Info: assets/robustness_analysis.png  used on input line 509
 .
-(pdftex.def)             Requested size: 409.71692pt x 271.66515pt.
-[13]
-<assets/histograma_precision.png, id=370, 999.4941pt x 709.6914pt>
+(pdftex.def)             Requested size: 409.71692pt x 271.92099pt.
+ [13]
+<assets/histograma_precision.png, id=371, 999.4941pt x 709.6914pt>
 File: assets/histograma_precision.png Graphic file (type png)
 <use assets/histograma_precision.png>
 Package pdftex.def Info: assets/histograma_precision.png  used on input line 52
-3.
+2.
 (pdftex.def)             Requested size: 409.71692pt x 290.9212pt.
  [14 <./assets/robustness_analysis.png>]
 <assets/tiempo_vs_iteraciones.png, id=377, 854.2314pt x 566.5968pt>
 File: assets/tiempo_vs_iteraciones.png Graphic file (type png)
 <use assets/tiempo_vs_iteraciones.png>
 Package pdftex.def Info: assets/tiempo_vs_iteraciones.png  used on input line 5
-30.
+29.
 (pdftex.def)             Requested size: 409.71692pt x 271.75587pt.
  [15 <./assets/histograma_precision.png>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-41.
- (C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+40.
+
+(C:\Users\TIGER\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 <assets/boxplot_iteraciones.png, id=384, 855.6768pt x 567.0786pt>
 File: assets/boxplot_iteraciones.png Graphic file (type png)
 <use assets/boxplot_iteraciones.png>
-Package pdftex.def Info: assets/boxplot_iteraciones.png  used on input line 547
+Package pdftex.def Info: assets/boxplot_iteraciones.png  used on input line 546
 .
-(pdftex.def)             Requested size: 409.71692pt x 271.52835pt.
-
-[16{C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}
- <./assets/tiempo_vs_iteraciones.png>]
+(pdftex.def)             Requested size: 455.24411pt x 301.70107pt.
+ [16{C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
+} <./assets/tiempo_vs_iteraciones.png>]
 <assets/massive_experiment_results.png, id=392, 1071.0414pt x 854.2314pt>
 File: assets/massive_experiment_results.png Graphic file (type png)
 <use assets/massive_experiment_results.png>
 Package pdftex.def Info: assets/massive_experiment_results.png  used on input l
-ine 554.
-(pdftex.def)             Requested size: 409.71692pt x 326.77504pt.
+ine 553.
+(pdftex.def)             Requested size: 455.24411pt x 363.08917pt.
  [17 <./assets/boxplot_iteraciones.png>]
 <assets/heatmap_convergencia.png, id=399, 1003.1076pt x 850.8588pt>
 File: assets/heatmap_convergencia.png Graphic file (type png)
 <use assets/heatmap_convergencia.png>
 Package pdftex.def Info: assets/heatmap_convergencia.png  used on input line 56
-1.
+0.
 (pdftex.def)             Requested size: 409.71692pt x 347.53009pt.
-
-[18 <./assets/massive_experiment_results.png>] [19 <./assets/heatmap_convergenc
-ia.png>]
-Underfull \hbox (badness 4378) in paragraph at lines 591--592
+ [18 <./assets/massive_experiment_results.png>] [19 <./assets/heatmap_convergen
+cia.png>]
+Underfull \hbox (badness 4378) in paragraph at lines 590--591
 []\T1/lmr/m/n/12 (+20) Confirmado en mues-tra
  []
 
 
-Overfull \hbox (46.33907pt too wide) in paragraph at lines 585--595
+Overfull \hbox (46.33907pt too wide) in paragraph at lines 584--594
  [][] 
  []
 
-[20]
-Overfull \hbox (35.70276pt too wide) in paragraph at lines 636--637
+
+Overfull \hbox (52.76666pt too wide) in paragraph at lines 604--615
+ [][] 
+ []
+
+[20] [21]
+Overfull \hbox (35.70276pt too wide) in paragraph at lines 655--656
 []\T1/lmr/m/n/12 (-20) Clonar el re-po-si-to-rio: []$\T1/lmtt/m/n/12 https : / 
 / github . com / Ronald1301 / Optimization-[]algorithms-[]RPV .
  []
 
-[21] (optimization_report.aux
+[22] (optimization_report.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -896,16 +894,16 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `optimization_report.out' has not changed.
-(rerunfilecheck)             Checksum: 4F274DB20CBD94869CB1C75DAB0C8129;14286.
+(rerunfilecheck)             Checksum: 616315EFE6E880FBD67822AF6E9B8C99;14513.
  ) 
 Here is how much of TeX's memory you used:
- 18637 strings out of 474486
- 301679 string characters out of 5743754
- 1942542 words of memory out of 5000000
+ 18641 strings out of 474486
+ 301505 string characters out of 5743754
+ 1940542 words of memory out of 5000000
  40283 multiletter control sequences out of 15000+600000
- 653176 words of font info for 217 fonts, out of 8000000 for 9000
+ 653267 words of font info for 218 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,14n,79p,1018b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,16n,79p,1018b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.p
@@ -924,9 +922,9 @@ sers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Us
 ers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Us
 ers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb>
-Output written on optimization_report.pdf (21 pages, 2439016 bytes).
+Output written on optimization_report.pdf (22 pages, 2303704 bytes).
 PDF statistics:
- 551 PDF objects out of 1000 (max. 8388607)
- 131 named destinations out of 1000 (max. 500000)
- 52259 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 557 PDF objects out of 1000 (max. 8388607)
+ 133 named destinations out of 1000 (max. 500000)
+ 52262 words of extra memory for PDF output out of 61914 (max. 10000000)
 
