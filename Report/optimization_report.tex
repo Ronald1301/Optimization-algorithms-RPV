@@ -354,288 +354,203 @@
 	
 	La justificación del enfoque híbrido considera que lejos del óptimo el gradiente es más robusto, cerca del óptimo Newton es más eficiente, con umbral típico $\epsilon_{\text{newton}} = 10^{-4}$.
 	
-	\section{Experimentos Numéricos}
-	
-	\subsection{Diseño Experimental Exhaustivo}
-	
-	\subsubsection{Conjunto Completo de Puntos Iniciales}
-	
-	Se realizó un experimento exhaustivo utilizando puntos de la forma $(10i, 10j)$ con $i, j \in \{-10, -9, \dots, 9, 10\}$, generando un total de $21 \times 21 = 441$ puntos iniciales distribuidos uniformemente en el rango $[-100, 100] \times [-100, 100]$.
-	
-	\begin{table}[H]
-		\centering
-		\caption{Caracterización del conjunto completo de puntos iniciales}
-		\begin{tabular}{p{0.25\textwidth}p{0.7\textwidth}}
-			\toprule
-			\textbf{Parámetro} & \textbf{Descripción} \\
-			\midrule
-			Formato de puntos & $(10i, 10j)$ con $i,j \in \{-10,-9,\dots,9,10\}$ \\
-			Número total de experimentos & $21 \times 21 = 441$ \\
-			Rango espacial & $[-100, 100] \times [-100, 100]$ \\
-			Distribución & Uniforme en cuadrícula regular \\
-			Distancias al óptimo & Desde $\sqrt{0^2 + 0^2} = 0$ hasta $\sqrt{100^2 + 100^2} \approx 141.42$ \\
-			Cuadrantes cubiertos & Los 4 cuadrantes del plano cartesiano \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	\subsubsection{Clasificación por Distancia al Óptimo}
-	
-	Para un análisis más detallado, los puntos se agruparon según su distancia euclidiana al óptimo $(0,0)$ en categorías que incluyen Muy cercanos ($[0, 20)$) como región de alta curvatura y desafío para Newton, Cercanos ($[20, 50)$) como región de transición con buen comportamiento, Moderados ($[50, 80)$) como región típica con comportamiento estable, Lejanos ($[80, 120)$) como región de descenso suave, y Muy lejanos ($[120, 141.42]$)  como región asintótica con crecimiento lento.
-	
-	\begin{table}[H]
-		\centering
-		\caption{Clasificación de puntos iniciales por distancia al óptimo}
-		\begin{tabular}{p{0.22\textwidth}p{0.25\textwidth}p{0.43\textwidth}}
-			\toprule
-			\textbf{Categoría} & \textbf{Rango} & \textbf{Características} \\
-			& \textbf{(unidades de }& \\
-			& \textbf{ distancia) } & \\
-			\midrule
-			Muy cercanos & $[0, 20)$ & Región de alta curvatura, desafío para Newton \\
-			Cercanos & $[20, 50)$ & Región de transición, buen comportamiento \\
-			Moderados & $[50, 80)$ & Región típica, comportamiento estable \\
-			Lejanos & $[80, 120)$ & Región de descenso suave \\
-			Muy lejanos & $[120, 141.42]$ & Región asintótica, crecimiento lento \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	\subsection{Métricas de Evaluación Estadística}
-	
-	Se implementaron métricas estadísticas robustas para evaluar el desempeño incluyendo iteraciones con media, mediana, desviación estándar y rango intercuartílico; tiempo de ejecución con medidas de tendencia central y dispersión; precisión final con $-\log_{10}(f(x_{\text{opt}}))$ y análisis de outliers; tasa de éxito como proporción de experimentos con $f(x_{\text{opt}}) < 10^{-6}$; y eficiencia computacional mediante iteraciones por unidad de mejora en la función objetivo.
-	
-	\subsection{Análisis de Convergencia desde Punto Específico}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\textwidth]{assets/convergence_analysis.png}
-		\caption{Convergencia del valor de la función y norma del gradiente desde el punto (10,10). Se observa la rápida convergencia de Newton con decrecimiento súper-lineal del valor de la función, consistente con la teoría de convergencia de Newton. El método de Gradiente Descendente muestra decrecimiento lineal, como predice la teoría para el método de máximo descenso. La norma del gradiente decrece más rápidamente en Newton, indicando mayor eficiencia en alcanzar puntos estacionarios. El algoritmo híbrido mantiene un comportamiento estable combinando ambas estrategias.}
-		\label{fig:convergence_10_10}
-	\end{figure}
-	
-	
-	\subsection{Resultados Estadísticos Completos}
-	
-	\subsubsection{Estadísticas Descriptivas por Algoritmo}
-	
-	\begin{table}[H]
-		\centering
-		\caption{Estadísticas completas de iteraciones (441 experimentos)}
-		\begin{tabular}{lcccccc}
-			\toprule
-			\textbf{Algoritmo} & \textbf{Media} & \textbf{Mediana} & \textbf{Desv. Std.} & \textbf{Mín} & \textbf{Máx} & \textbf{IQR} \\
-			\midrule
-			GD Paso Fijo & 47.3 & 45 & 12.8 & 28 & 89 & 18 \\
-			GD Adaptativo & 39.1 & 37 & 9.2 & 25 & 67 & 11 \\
-			Newton & 15.7 & 14 & 6.3 & 8 & 42 & 7 \\
-			Híbrido & 26.8 & 25 & 8.1 & 15 & 51 & 9 \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	\begin{table}[H]
-		\centering
-		\caption{Estadísticas de tiempo de ejecución en segundos (441 experimentos)}
-		\begin{tabular}{lcccccc}
-			\toprule
-			\textbf{Algoritmo} & \textbf{Media} & \textbf{Mediana} & \textbf{Desv. Std.} & \textbf{Mín} & \textbf{Máx} & \textbf{IQR} \\
-			\midrule
-			GD Paso Fijo & 0.0034 & 0.0031 & 0.0012 & 0.0021 & 0.0089 & 0.0018 \\
-			GD Adaptativo & 0.0029 & 0.0027 & 0.0009 & 0.0018 & 0.0067 & 0.0011 \\
-			Newton & 0.0051 & 0.0048 & 0.0018 & 0.0032 & 0.0124 & 0.0021 \\
-			Híbrido & 0.0033 & 0.0030 & 0.0011 & 0.0020 & 0.0075 & 0.0014 \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	\subsubsection{Análisis de Precisión y Tasa de Éxito}
-	
-	\begin{table}[H]
-		\centering
-		\caption{Análisis de precisión y robustez (441 experimentos)}
-		\begin{tabular}{lcccc}
-			\toprule
-			\textbf{Algoritmo} & \textbf{Precisión Media} & \textbf{Tasa Éxito (\%)} & \textbf{Fallos} & \textbf{Precisión Mediana} \\
-			\midrule
-			GD Paso Fijo & 8.3 & 84.1 & 70 & 8.5 \\
-			GD Adaptativo & 9.2 & 100.0 & 0 & 9.3 \\
-			Newton & 14.1 & 98.4 & 7 & 14.3 \\
-			Híbrido & 12.7 & 100.0 & 0 & 12.9 \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	\subsection{Análisis por Categorías de Distancia}
-	
-	\subsubsection{Comportamiento Según Distancia al Óptimo}
-	
-	\begin{table}[H]
-		\centering
-		\caption{Iteraciones promedio por categoría de distancia}
-		\begin{tabular}{lccccc}
-			\toprule
-			\textbf{Algoritmo} & \textbf{Muy Cercano} & \textbf{Cercano} & \textbf{Moderado} & \textbf{Lejano} & \textbf{Muy Lejano} \\
-			\midrule
-			GD Paso Fijo & 52 & 47 & 45 & 46 & 48 \\
-			GD Adaptativo & 42 & 38 & 37 & 39 & 41 \\
-			Newton & 22 & 16 & 14 & 13 & 15 \\
-			Híbrido & 32 & 26 & 25 & 25 & 27 \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	\subsubsection{Análisis de Fallos por Categoría}
-	
-	\begin{table}[H]
-		\centering
-		\caption{Distribución de fallos por algoritmo y distancia}
-		\begin{tabular}{lccccc}
-			\toprule
-			\textbf{Algoritmo} & \textbf{Muy Cercano} & \textbf{Cercano} & \textbf{Moderado} & \textbf{Lejano} & \textbf{Muy Lejano} \\
-			\midrule
-			GD Paso Fijo & 25 & 18 & 12 & 10 & 5 \\
-			Newton & 5 & 1 & 1 & 0 & 0 \\
-			GD Adaptativo & 0 & 0 & 0 & 0 & 0 \\
-			Híbrido & 0 & 0 & 0 & 0 & 0 \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	\subsection{Análisis de Robustez}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\textwidth]{assets/robustness_analysis.png}
-		\caption{Análisis de robustez: iteraciones y precisión vs distancia inicial al óptimo. El algoritmo híbrido muestra el mejor balance entre eficiencia y robustez.}
-		\label{fig:robustness_analysis}
-	\end{figure}
-	
-	
-	
-	
-	
-	\subsection{Análisis de Precisión y Eficiencia Computacional}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\textwidth]{assets/histograma_precision.png}
-		\caption{Distribución de precisión por algoritmo (solo experimentos exitosos). Newton muestra la mayor precisión con distribución más concentrada, mientras GD Paso Fijo tiene mayor variabilidad.}
-		\label{fig:histograma_precision}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\textwidth]{assets/tiempo_vs_iteraciones.png}
-		\caption{Relación entre iteraciones y tiempo de ejecución. Se observa correlación lineal positiva, con Newton mostrando menor pendiente debido a su mayor costo computacional por iteración.}
-		\label{fig:tiempo_vs_iteraciones}
-	\end{figure}
-	
-	\subsubsection{Análisis de la Relación Iteraciones-Tiempo}
-	
-	La relación entre iteraciones y tiempo de ejecución revela información importante sobre la eficiencia computacional. Newton, aunque requiere pocas iteraciones, tiene mayor costo por iteración debido al cálculo de la Hessiana. En contraste, GD Paso Fijo presenta mayor número de iteraciones pero menor costo por iteración ($O(n)$ vs $O(n^2)$ de Newton). El GD Adaptativo muestra un balance óptimo entre iteraciones y costo computacional, mientras que el algoritmo Híbrido combina bajo costo inicial (GD) con alta eficiencia final (Newton).
-	
-	\subsubsection{Distribución de Precisión por Algoritmo}
-	
-	El análisis de distribución de precisión confirma los hallazgos anteriores. Newton presenta una distribución más concentrada alrededor de alta precisión (14.1 ± 0.5), mientras que el Híbrido muestra precisión intermedia con baja variabilidad (12.7 ± 0.7). El GD Adaptativo mantiene precisión moderada (9.2 ± 0.8) pero consistente, y el GD Paso Fijo exhibe mayor dispersión (8.3 ± 1.0) debido a fallos de convergencia.
-	
-	\subsection{Visualización de Resultados}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\textwidth]{assets/boxplot_iteraciones.png}
-		\caption{Diagrama de caja de iteraciones por algoritmo (441 experimentos). Se observa la menor variabilidad de Newton y la robustez del GD Adaptativo.}
-		\label{fig:boxplot_iteraciones}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=1\textwidth]{assets/massive_experiment_results.png}
-		\caption{Comparativa del rendimiento de los algoritmos de optimización seleccionados.}
-		\label{fig:massive_experiment_results}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\textwidth]{assets/heatmap_convergencia.png}
-		\caption{Mapa de calor de tasa de éxito por coordenadas iniciales. Las regiones rojas indican fallos de convergencia, concentrados cerca del origen para Newton y distribuidas aleatoriamente para GD Paso Fijo.}
-		\label{fig:heatmap_convergencia}
-	\end{figure}
-	
-	\subsection{Interpretación de Resultados del Experimento Masivo}
-	
-	\subsubsection{Hallazgos Principales del Análisis Estadístico}
-	
-	Los hallazgos principales del análisis estadístico revelan que el GD Adaptativo y el Híbrido mantienen 100\% de éxito en los 441 experimentos, confirmando su robustez. Newton, aunque tiene 7 fallos, muestra el menor número de iteraciones en casos exitosos, demostrando alta eficiencia. El GD Paso Fijo presenta 70 fallos (15.9\% del total), principalmente en regiones cercanas al óptimo, mientras que el Híbrido combina la eficiencia de Newton con la robustez del GD Adaptativo, mostrando estabilidad óptima.
-	
-	\subsubsection{Análisis de Patrones Espaciales}
-	
-	El análisis de patrones espaciales identifica regiones problemáticas para Newton en puntos muy cercanos al origen $(0,0)$ donde la Hessiana es casi singular. El GD Paso Fijo muestra fallos distribuidos aleatoriamente, indicando sensibilidad a la tasa de aprendizaje fija. Todos los algoritmos se comportan consistentemente en los 4 cuadrantes, demostrando independencia del cuadrante, y el desempeño depende principalmente de la distancia al origen, no de la dirección, evidenciando un efecto de simetría radial.
-	
-	\subsubsection{Implicaciones Prácticas}
-	
-	Las implicaciones prácticas indican que la selección de algoritmo depende del conocimiento previo sobre la posición inicial. El GD Adaptativo requiere mínima configuración para máxima robustez, siendo ideal para escenarios sin información inicial. Para puntos cercanos al óptimo se recomienda Newton (con regularización) o Híbrido, mientras que para puntos lejanos al óptimo son preferibles GD Adaptativo o Híbrido. Cuando se busca máxima precisión, Newton con múltiples reinicios resulta la mejor opción.
-	
-	\subsection{Comparación con el Experimento Original}
-	
-	\begin{table}[H]
-		\centering
-		\caption{Comparación entre experimento inicial y masivo}
-		\begin{tabular}{p{0.3\textwidth}ccp{0.3\textwidth}}
-			\toprule
-			\textbf{Métrica} & \textbf{Inicial (6 pts)} & \textbf{Masivo (441 pts)} & \textbf{Conclusión} \\
-			\midrule
-			Tasa éxito GD Paso Fijo & 83.3\% & 84.1\% & Resultado inicial representativo \\
-			Iteraciones Newton & 12.3 & 15.7 & Subestimación en muestra pequeña \\
-			Robustez Híbrido & 100\% & 100\% & Confirmado en muestra grande \\
-			Tiempo GD Adaptativo & 0.0028s & 0.0029s & Consistencia temporal \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	Los resultados del experimento inicial fueron generalmente representativos, pero el análisis masivo reveló patrones adicionales sobre la sensibilidad a la posición inicial y confirmó la robustez de los algoritmos adaptativos e híbridos en un conjunto comprehensivo de condiciones iniciales.
-	
-		
-	\subsubsection{Tabla de Comparación Completa}
-	
-	\begin{table}[H]
-		\centering
-		\caption{Comparación completa de algoritmos en todas las métricas (441 experimentos)}
-		\begin{tabular}{p{0.2\textwidth}ccccp{0.18\textwidth}}
-			\toprule
-			\textbf{Métrica} & \textbf{GD Paso Fijo} & \textbf{GD Adaptativo} & \textbf{Newton} & \textbf{Híbrido} & \textbf{Mejor} \\
-			\midrule
-			\shortstack{Iteraciones \\ (media)} & 47.3 & 39.1 & 15.7 & 26.8 & Newton \\[0.5em]
-			\shortstack{Tasa de éxito \\ (\%)} & 84.1 & 100.0 & 98.4 & 100.0 & \shortstack{GD Adaptativo \\ Híbrido} \\[0.5em]
-			\shortstack{Precisión final \\ ($-\log_{10}(f)$)} & 8.3 & 9.2 & 14.1 & 12.7 & Newton \\[0.5em]
-			\shortstack{Tiempo (s) \\ computacional} & 0.0034 & 0.0029 & 0.0051 & 0.0033 & GD Adaptativo \\[0.5em]
-			\shortstack{Robustez \\ numérica} & Baja & Alta & Media & Alta & \shortstack{GD Adaptativo \\ Híbrido} \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
-	
-	\textbf{Conclusión}: Cada algoritmo tiene ventajas en diferentes métricas. Newton es el más eficiente en iteraciones y precisión, GD Adaptativo es el más rápido y robusto, mientras que el algoritmo Híbrido ofrece el mejor balance general. La "mejor" elección depende del criterio prioritario del usuario.
-	
+\section{Experimentos Numéricos}
+
+\subsection{Diseño Experimental Exhaustivo}
+
+\subsubsection{Conjunto Completo de Puntos Iniciales}
+
+Se realizó un experimento exhaustivo utilizando puntos de la forma $(10i, 10j)$ con $i, j \in \{-10, -9, \dots, 9, 10\}$, generando un total de $21 \times 21 = 441$ puntos iniciales distribuidos uniformemente en el rango $[-100, 100] \times [-100, 100]$.
+
+\begin{table}[H]
+	\centering
+	\caption{Caracterización del conjunto completo de puntos iniciales}
+	\begin{tabular}{p{0.25\textwidth}p{0.7\textwidth}}
+		\toprule
+		\textbf{Parámetro} & \textbf{Descripción} \\
+		\midrule
+		Formato de puntos & $(10i, 10j)$ con $i,j \in \{-10,-9,\dots,9,10\}$ \\
+		Número total de experimentos & $21 \times 21 = 441$ \\
+		Rango espacial & $[-100, 100] \times [-100, 100]$ \\
+		Distribución & Uniforme en cuadrícula regular \\
+		Distancias al óptimo & Desde $\sqrt{0^2 + 0^2} = 0$ hasta $\sqrt{100^2 + 100^2} \approx 141.42$ \\
+		Cuadrantes cubiertos & Los 4 cuadrantes del plano cartesiano \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\subsubsection{Clasificación por Distancia al Óptimo}
+
+Para un análisis más detallado, los puntos se agruparon según su distancia euclidiana al óptimo $(0,0)$ en categorías que incluyen Muy cercanos ($[0, 20)$) como región de alta curvatura y desafío para Newton, Cercanos ($[20, 50)$) como región de transición con buen comportamiento, Moderados ($[50, 80)$) como región típica con comportamiento estable, Lejanos ($[80, 120)$) como región de descenso suave, y Muy lejanos ($[120, 141.42]$)  como región asintótica con crecimiento lento.
+
+\begin{table}[H]
+	\centering
+	\caption{Clasificación de puntos iniciales por distancia al óptimo}
+	\begin{tabular}{p{0.22\textwidth}p{0.25\textwidth}p{0.43\textwidth}}
+		\toprule
+		\textbf{Categoría} & \textbf{Rango} & \textbf{Características} \\
+		& \textbf{(unidades de }& \\
+		& \textbf{ distancia) } & \\
+		\midrule
+		Muy cercanos & $[0, 20)$ & Región de alta curvatura, desafío para Newton \\
+		Cercanos & $[20, 50)$ & Región de transición, buen comportamiento \\
+		Moderados & $[50, 80)$ & Región típica, comportamiento estable \\
+		Lejanos & $[80, 120)$ & Región de descenso suave \\
+		Muy lejanos & $[120, 141.42]$ & Región asintótica, crecimiento lento \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\subsection{Métricas de Evaluación Estadística}
+
+Se implementaron métricas estadísticas robustas para evaluar el desempeño incluyendo iteraciones con media, mediana, desviación estándar y rango intercuartílico; tiempo de ejecución con medidas de tendencia central y dispersión; precisión final con $-\log_{10}(f(x_{\text{opt}}))$ y análisis de outliers; tasa de éxito como proporción de experimentos con $f(x_{\text{opt}}) < 10^{-6}$; y eficiencia computacional mediante iteraciones por unidad de mejora en la función objetivo.
+
+\subsection{Análisis de Convergencia desde Punto Específico}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{assets/convergence_analysis.png}
+	\caption{
+		Análisis comparativo de convergencia desde el punto inicial $(10,10)$. 
+		\textbf{Arriba izquierda}: Evolución del valor de la función objetivo. Solo GD Adaptativo (verde) cruza el umbral de éxito ($10^{-6}$). 
+		\textbf{Arriba derecha}: Norma del gradiente. GD Adaptativo alcanza $10^{-13}$, indicando convergencia a punto estacionario.
+		\textbf{Abajo izquierda}: Distancia al óptimo $(0,0)$. GD Adaptativo llega a $10^{-3}$, mientras Newton e Híbrido divergen.
+		\textbf{Abajo derecha}: Trayectorias en el plano. GD Adaptativo (verde) converge suavemente al óptimo, mientras otros métodos fallan.
+	}
+	\label{fig:convergence_10_10}
+\end{figure}
+
+El análisis desde el punto $(10,10)$ revela diferencias significativas en el comportamiento de los algoritmos: el método GD Adaptativo (verde) es el único que converge exitosamente, alcanzando un valor de función de $\sim 10^{-6}$ (cruzando el umbral de éxito), una norma del gradiente de $\sim 10^{-13}$ que satisface la condición de optimalidad, y una distancia al óptimo de $\sim 10^{-3}$; por el contrario, Newton (azul) presenta divergencia catastrófica debido a la singularidad de la matriz Hessiana, con valores que alcanzan $10^{33}$; el método Híbrido (rojo) hereda los problemas numéricos de Newton y tampoco converge; mientras que GD Paso Fijo (naranja) se estanca prematuramente debido a un learning rate fijo inadecuado, sin alcanzar el óptimo.
+
+\newpage
+La trayectoria en el plano confirma que solo GD Adaptativo sigue un camino eficiente hacia el óptimo $(0,0)$, mientras los demás algoritmos o divergen (Newton, Híbrido) o muestran progreso insuficiente (GD Paso Fijo).
+
+ la adaptabilidad del paso es crucial para esta función.
+
+\subsubsection{Distribución de Precisión por Algoritmo}
+
+El análisis de distribución de precisión confirma que solo el GD Adaptativo logra precisión consistente (17.5 ± 0.8). Los demás algoritmos no alcanzan convergencia en la práctica, con valores de función muy alejados del óptimo. Esto subraya la importancia de métodos adaptativos para funciones con características numéricas desafiantes como la Hessiana singular en el óptimo.
+
+\subsection{Visualización de Resultados}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{assets/boxplot_iteraciones.png}
+	\caption{Distribución de iteraciones por algoritmo. El GD Adaptativo muestra variabilidad natural en iteraciones necesarias (mediana: 464), mientras los otros algoritmos alcanzan sus límites máximos sin converger (1000 para GD Paso Fijo, 100 para Newton/Híbrido).}
+	\label{fig:boxplot_iteraciones}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{assets/massive_experiment_results.png}
+	\caption{Comparativa general de algoritmos. Destaca la superioridad absoluta del GD Adaptativo: 100\% de éxito vs 0.2\% de los demás. Aunque más lento en iteraciones, es el único que garantiza convergencia.}
+	\label{fig:massive_experiment_results}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{assets/heatmap_convergencia.png}
+	\caption{Mapa de calor de tasa de éxito. El GD Adaptativo (no mostrado por ser 100\% en todas partes) domina completamente. Newton falla cerca del origen (Hessiana singular), GD Paso Fijo falla aleatoriamente (learning rate fijo inadecuado).}
+	\label{fig:heatmap_convergencia}
+\end{figure}
+
+\subsection{Interpretación de Resultados del Experimento Masivo}
+
+\subsubsection{Hallazgos Principales del Análisis Estadístico}
+
+Los hallazgos principales del análisis estadístico revelan que solo el \textbf{GD Adaptativo} mantiene \textbf{100\% de éxito} en los 441 experimentos, confirmando su robustez excepcional. \textbf{Newton, GD Paso Fijo y el algoritmo Híbrido fallan en el 99.8\%} de los casos, demostrando ser inadecuados para esta función específica. El GD Adaptativo no solo converge consistentemente, sino que alcanza precisiones extremadamente altas ($f(x) \approx 10^{-18}$), muy cerca del óptimo teórico.
+
+\subsubsection{Análisis de Patrones Espaciales}
+
+El análisis de patrones espaciales identifica que la convergencia exitosa del GD Adaptativo es independiente de la posición inicial, funcionando igualmente bien en todos los cuadrantes y distancias. Los otros algoritmos muestran fallos sistemáticos: \textbf{Newton falla debido a la Hessiana singular} cerca del óptimo, mientras que \textbf{GD Paso Fijo sufre de un learning rate fijo inadecuado}. Todos los algoritmos exhiben el comportamiento de simetría radial esperado dada la naturaleza de la función.
+
+\subsubsection{Implicaciones Prácticas}
+
+Las implicaciones prácticas indican que para esta función específica, el \textbf{GD Adaptativo es la única opción viable}. No se recomienda el uso de Newton puro debido a los problemas numéricos con la Hessiana singular. El algoritmo híbrido no logra superar estas limitaciones. En aplicaciones prácticas donde no se conoce la posición inicial, el GD Adaptativo ofrece garantías de convergencia que los otros métodos no pueden proporcionar.
+
+\subsection{Comparación con el Experimento Original}
+
+\begin{table}[H]
+	\centering
+	\caption{Comparación entre experimento inicial y masivo}
+	\begin{tabular}{p{0.3\textwidth}ccp{0.3\textwidth}}
+		\toprule
+		\textbf{Métrica} & \textbf{Inicial (6 pts)} & \textbf{Masivo (441 pts)} & \textbf{Conclusión} \\
+		\midrule
+		Tasa éxito GD Paso Fijo & 83.3\% & 0.2\% & Resultado inicial no representativo \\
+		Iteraciones Newton & 12.3 & 99.8 & Subestimación grave en muestra pequeña \\
+		Robustez Híbrido & 100\% & 0.2\% & No confirmado en muestra grande \\
+		Tiempo GD Adaptativo & 0.0028s & 0.0072s & Consistencia relativa en tiempo \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Los resultados del experimento inicial fueron \textbf{engañosos debido al pequeño tamaño de muestra}. El análisis masivo reveló que solo el GD Adaptativo es confiable, mientras que los otros algoritmos fallan sistemáticamente en la gran mayoría de casos. Esto subraya la importancia de realizar experimentos exhaustivos para evaluar robustez.
+
+\subsubsection{Tabla de Comparación Completa}
+
+\begin{table}[H]
+	\centering
+	\caption{Comparación completa de algoritmos en todas las métricas (441 experimentos)}
+	\begin{tabular}{p{0.2\textwidth}ccccp{0.18\textwidth}}
+		\toprule
+		\textbf{Métrica} & \textbf{GD Paso Fijo} & \textbf{GD Adaptativo} & \textbf{Newton} & \textbf{Híbrido} & \textbf{Mejor} \\
+		\midrule
+		\shortstack{Iteraciones \\ (media)} & 997.7 & 445.9 & 99.8 & 99.8 & Newton* \\[0.5em]
+		\shortstack{Tasa de éxito \\ (\%)} & 0.2 & 100.0 & 0.2 & 0.2 & GD Adaptativo \\[0.5em]
+		\shortstack{Precisión final \\ ($-\log_{10}(f)$)} & -- & 17.5 & -- & -- & GD Adaptativo \\[0.5em]
+		\shortstack{Tiempo (s) \\ computacional} & 0.0101 & 0.0072 & 0.0031 & 0.0022 & Híbrido* \\[0.5em]
+		\shortstack{Robustez \\ numérica} & Baja & Alta & Baja & Baja & GD Adaptativo \\
+		\bottomrule
+	\end{tabular}
+	\par\medskip
+	\small\textit{*Aunque Newton y Híbrido tienen mejores métricas en iteraciones y tiempo, no logran converger en la práctica.}
+\end{table}
+
+\textbf{Conclusión final}: El \textbf{Gradiente Descendente Adaptativo es claramente el mejor algoritmo} para esta función, siendo el único que logra convergencia consistente. Los otros métodos, aunque aparentemente eficientes en términos de iteraciones y tiempo, fallan en alcanzar el óptimo debido a limitaciones numéricas fundamentales. Para funciones con Hessiana singular en el óptimo como $f(x,y) = \log(x^2 + y^2 + 1) \cdot \arctan(x^2 + y^2)$, la \textbf{elección óptima es inequívocamente el GD Adaptativo} cuando se prioriza la convergencia robusta.
+
+
 	\newpage
 	\appendix
 	\section{Implementación del Código}
 	
 	\subsection{Estructura del Código}
 	
-	El código completo de implementación se encuentra en el archivo Jupyter Notebook:\textbf{optimization\_analysis.ipynb} que esta dividido en secciones principales:
+	El código completo de implementación se encuentra en el archivo Jupyter Notebook \textbf{optimization\_analysis.ipynb} que esta dividido en secciones principales:
 	
 	\begin{enumerate}
 		\item Configuración inicial e importaciones
 		\item Definición de la función objetivo y sus derivadas analíticas
 		\item Análisis teórico del comportamiento de la función
+		\item Visualización de la función
+		\begin{itemize}
+			\item Gráfica 3D de la función
+			\item Gráfica del contorno
+		\end{itemize}
 		\item Implementación de algoritmos de optimización:
 		\begin{itemize}
-			\item Gradiente Descendente (paso fijo y adaptativo)
-			\item Método de Newton con regularización
-			\item Algoritmo híbrido
+			\item Gradiente Descendente (paso fijo)
+			\item Gradiente Descendente Adaptativo
+			\item Método de Newton
+			\item Algoritmo Híbrido
 		\end{itemize}
-		\item Experimentos numéricos y comparación de algoritmos
-		\item Visualización de resultados y trayectorias de convergencia
+		\item Experimentos numéricos
+		\begin{itemize}
+			\item Comparación desde punto (10, 10)
+			\item Análisis de convergencia
+		\end{itemize}
+		\item Experimento masivo (441 puntos)
+		\begin{itemize}
+			\item Análisis estadístico de resultados
+			\item Visualización de resultados del experimento masivo
+			\item Diagrama de iteraciones
+			\item Mapa de calor de tasas de éxitos
+		\end{itemize}
+		\item Análisis de robustez por distancia al óptimo
+		\item Análisis de eficiencia computacional
+		\item Análisis de precisión
+		\item Conclusiones
+		\item Referencias y enlaces
 	\end{enumerate}
 	
 	\subsection{Dependencias y Requisitos}
@@ -657,7 +572,7 @@
 		\begin{enumerate}
 			\item optimization\_analysis.ipynb
 		\end{enumerate}
-		\item Los resultados se generarán automáticamente y se guardarán en el directorio de resultados.
+		\item Los resultados se generarán automáticamente
 	\end{enumerate}
 	
 \end{document}
