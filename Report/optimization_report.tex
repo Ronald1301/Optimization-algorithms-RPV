@@ -449,6 +449,27 @@ El análisis de distribución de precisión confirma que solo el GD Adaptativo l
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[width=1\textwidth]{assets/robustness_analysis.png}
+	\caption{Análisis de robustez frente a variación de puntos iniciales: proporción de éxitos por región de distancia al óptimo y por algoritmo. Se observa que GD Adaptativo mantiene 100\% de éxito en todas las regiones, mientras que Newton, Híbrido y GD Paso Fijo presentan fallos sistemáticos en la mayoría de las categorías.}
+	\label{fig:robustness_analysis}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{assets/histograma_precision.png}
+	\caption{Histograma de precisión final medido como $-\log_{10}(f(x_{\text{opt}}))$ sobre los 441 experimentos, desagregado por algoritmo. GD Adaptativo muestra una distribución concentrada alrededor de 17.5 (alta precisión), mientras que los demás algoritmos presentan masas en valores bajos o no convergentes.}
+	\label{fig:histograma_precision}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{assets/tiempo_vs_iteraciones.png}
+	\caption{Relación entre tiempo de cómputo y número de iteraciones por algoritmo. Newton y el Híbrido requieren menos iteraciones pero sus soluciones carecen de convergencia fiable; GD Adaptativo necesita más iteraciones pero logra alta precisión con tiempo por experimento competitivo.}
+	\label{fig:tiempo_vs_iteraciones}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
 	\includegraphics[width=0.9\textwidth]{assets/heatmap_convergencia.png}
 	\caption{Mapa de calor de tasa de éxito. El GD Adaptativo (no mostrado por ser 100\% en todas partes) domina completamente. Newton falla cerca del origen (Hessiana singular), GD Paso Fijo falla aleatoriamente (learning rate fijo inadecuado).}
 	\label{fig:heatmap_convergencia}

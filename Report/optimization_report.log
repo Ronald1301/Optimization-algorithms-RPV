@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.15)  24 NOV 2025 04:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.15)  24 NOV 2025 19:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -830,40 +830,62 @@ ine 445.
 (pdftex.def)             Requested size: 455.24411pt x 363.08917pt.
  [13{C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc
 } <./assets/boxplot_iteraciones.png>]
-<assets/heatmap_convergencia.png, id=334, 1143.3114pt x 862.9038pt>
+<assets/robustness_analysis.png, id=334, 1790.69pt x 1188.44pt>
+File: assets/robustness_analysis.png Graphic file (type png)
+<use assets/robustness_analysis.png>
+Package pdftex.def Info: assets/robustness_analysis.png  used on input line 452
+.
+(pdftex.def)             Requested size: 455.24411pt x 302.13242pt.
+ [14 <./assets/massive_experiment_results.png>]
+<assets/histograma_precision.png, id=341, 999.735pt x 718.8456pt>
+File: assets/histograma_precision.png Graphic file (type png)
+<use assets/histograma_precision.png>
+Package pdftex.def Info: assets/histograma_precision.png  used on input line 45
+9.
+(pdftex.def)             Requested size: 455.24411pt x 327.3385pt.
+
+[15 <./assets/robustness_analysis.png>]
+<assets/tiempo_vs_iteraciones.png, id=347, 999.2532pt x 562.7424pt>
+File: assets/tiempo_vs_iteraciones.png Graphic file (type png)
+<use assets/tiempo_vs_iteraciones.png>
+Package pdftex.def Info: assets/tiempo_vs_iteraciones.png  used on input line 4
+66.
+(pdftex.def)             Requested size: 455.24411pt x 256.37448pt.
+ [16 <./assets/histograma_precision.png>]
+<assets/heatmap_convergencia.png, id=354, 1143.3114pt x 862.9038pt>
 File: assets/heatmap_convergencia.png Graphic file (type png)
 <use assets/heatmap_convergencia.png>
-Package pdftex.def Info: assets/heatmap_convergencia.png  used on input line 45
-2.
+Package pdftex.def Info: assets/heatmap_convergencia.png  used on input line 47
+3.
 (pdftex.def)             Requested size: 409.71692pt x 309.23628pt.
- [14 <./assets/massive_experiment_results.png>]
-[15 <./assets/heatmap_convergencia.png>]
-Underfull \hbox (badness 4072) in paragraph at lines 481--482
+ [17 <./assets/tiempo_vs_iteraciones.png>] [18 <./assets/heatmap_convergencia.p
+ng>]
+Underfull \hbox (badness 4072) in paragraph at lines 502--503
 []\T1/lmr/m/n/12 (+20) Subestimación gra-ve en
  []
 
 
-Underfull \hbox (badness 3168) in paragraph at lines 483--484
+Underfull \hbox (badness 3168) in paragraph at lines 504--505
 []\T1/lmr/m/n/12 (+20) Consistencia re-la-ti-va en
  []
 
 
-Overfull \hbox (46.33907pt too wide) in paragraph at lines 476--486
+Overfull \hbox (46.33907pt too wide) in paragraph at lines 497--507
  [][] 
  []
 
 
-Overfull \hbox (52.76666pt too wide) in paragraph at lines 495--506
+Overfull \hbox (52.76666pt too wide) in paragraph at lines 516--527
  [][] 
  []
 
-[16] [17] [18]
-Overfull \hbox (35.70276pt too wide) in paragraph at lines 570--571
+[19] [20] [21]
+Overfull \hbox (35.70276pt too wide) in paragraph at lines 591--592
 []\T1/lmr/m/n/12 (-20) Clonar el re-po-si-to-rio: []$\T1/lmtt/m/n/12 https : / 
 / github . com / Ronald1301 / Optimization-[]algorithms-[]RPV .
  []
 
-[19] (optimization_report.aux
+[22] (optimization_report.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -875,11 +897,11 @@ Package rerunfilecheck Info: File `optimization_report.out' has not changed.
 (rerunfilecheck)             Checksum: 9D407EEC11F6304AB6E90FCD77C649F6;12153.
  ) 
 Here is how much of TeX's memory you used:
- 18609 strings out of 474486
- 300378 string characters out of 5743754
+ 18641 strings out of 474486
+ 301343 string characters out of 5743754
  1940542 words of memory out of 5000000
- 40246 multiletter control sequences out of 15000+600000
- 658504 words of font info for 228 fonts, out of 8000000 for 9000
+ 40270 multiletter control sequences out of 15000+600000
+ 658595 words of font info for 229 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,79p,1018b,628s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -901,9 +923,9 @@ sers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/Us
 ers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/Us
 ers/TIGER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb>
-Output written on optimization_report.pdf (19 pages, 1599773 bytes).
+Output written on optimization_report.pdf (22 pages, 1930581 bytes).
 PDF statistics:
- 504 PDF objects out of 1000 (max. 8388607)
- 119 named destinations out of 1000 (max. 500000)
- 54223 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 525 PDF objects out of 1000 (max. 8388607)
+ 125 named destinations out of 1000 (max. 500000)
+ 54238 words of extra memory for PDF output out of 61914 (max. 10000000)
 
